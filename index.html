@@ -25,10 +25,10 @@
             min-height: 100vh;
             box-sizing: border-box;
             position: relative;
-            padding-bottom: 80px; /* Отступ для кнопки QR */
-            /* Добавим немного отступов по краям, чтобы зайка не прилипал */
+            padding-bottom: 80px;
             padding-left: 10px;
             padding-right: 10px;
+            overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку из-за зайки/кнопки */
         }
 
         .container {
@@ -43,7 +43,7 @@
             width: 90%;
             position: relative;
             animation: fadeIn 1s ease-in-out;
-            z-index: 1; /* Чтобы быть над зайкой, если вдруг перекрытие */
+            z-index: 1;
         }
 
         @keyframes fadeIn {
@@ -177,7 +177,7 @@
             cursor: pointer;
             opacity: 0.6;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 50; /* Выше зайки */
+            z-index: 50;
             padding: 5px;
             line-height: 1;
             -webkit-tap-highlight-color: transparent;
@@ -196,32 +196,29 @@
             opacity: 0.8;
         }
 
-         /* --- ДОБАВЛЕНО: Стили для декоративного зайки --- */
+        /* Стили для декоративного зайки */
         .bunny-decoration {
             position: fixed;
-            bottom: 10px; /* Отступ снизу */
-            left: 10px;   /* Отступ слева */
-            width: 100px;  /* Ширина зайки */
-            height: auto; /* Автоматическая высота */
-            z-index: 5;  /* Ниже кнопки QR, ниже модального окна */
-            opacity: 0.85; /* Слегка прозрачный */
-            pointer-events: none; /* Не мешает кликам по элементам под ним */
-            /* Добавим анимацию появления */
+            bottom: 10px;
+            left: 8px;
+            width: 120px;
+            height: auto;
+            z-index: 5;
+            opacity: 0.85;
+            pointer-events: none;
             animation: fadeInBunny 1.5s 0.3s ease-out backwards;
         }
 
         @keyframes fadeInBunny {
             from {
                 opacity: 0;
-                transform: translateY(20px); /* Появление снизу */
+                transform: translateY(20px);
             }
             to {
                  opacity: 0.85;
                  transform: translateY(0);
             }
         }
-        /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
-
 
         /* Модальное окно с QR-кодом */
         .qr-modal {
@@ -234,7 +231,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* Самый высокий z-index */
+            z-index: 1000;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -302,13 +299,13 @@
         @media (max-width: 480px) {
             body {
                  padding-bottom: 70px;
-                 padding-left: 5px; /* Уменьшаем отступы на мобильных */
+                 padding-left: 5px;
                  padding-right: 5px;
             }
             .container {
                 padding: 30px 20px;
-                width: calc(100% - 30px); /* Корректируем ширину с учетом паддингов body */
-                margin-left: auto; /* Центрируем */
+                width: calc(100% - 30px);
+                margin-left: auto;
                 margin-right: auto;
             }
             h1 {
@@ -318,6 +315,9 @@
                 padding: 12px 15px;
                 font-size: 1em;
             }
+             .description { /* Уменьшаем шрифт описания на мобильных */
+                 font-size: 1em;
+             }
             .links {
                  margin-bottom: 20px;
             }
@@ -326,13 +326,12 @@
                  margin-top: 5px;
             }
 
-             /* --- ДОБАВЛЕНО: Адаптация зайки --- */
+            /* Адаптация зайки */
             .bunny-decoration {
-                 width: 70px; /* Уменьшаем зайку */
+                 width: 90px;
                  bottom: 5px;
                  left: 5px;
             }
-            /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
 
             .qr-modal .qr-container {
                  margin-bottom: 55px;
@@ -358,7 +357,9 @@
         <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
 
         <h1>Елена Чайка</h1>
-        <p class="description">Интересные куклы, зайки и мишки Тедди</p>
+        <!-- --- ИЗМЕНЕНО ОПИСАНИЕ --- -->
+        <p class="description">Интерьерные куклы, зайки и мишки Тедди</p>
+        <!-- --- КОНЕЦ ИЗМЕНЕНИЯ --- -->
 
         <div class="links">
             <a href="https://www.instagram.com/elena__chajka" target="_blank" class="link-button instagram">
@@ -369,7 +370,7 @@
             </a>
         </div>
 
-        <div class="slogan">Сделано с любовью ♥</div>
+        <div class="slogan">Сделано с любовью</div>
 
     </div>
 
@@ -378,10 +379,8 @@
         <i class="fa-solid fa-qrcode"></i>
     </button>
 
-    <!-- --- ДОБАВЛЕНО: Изображение зайки --- -->
+    <!-- Изображение зайки -->
     <img src="Zajka.png" alt="Декоративный зайка" class="bunny-decoration">
-    <!-- --- КОНЕЦ ДОБАВЛЕНИЯ --- -->
-
 
     <!-- Модальное окно с QR-кодом -->
     <div class="qr-modal" id="qrModal">
