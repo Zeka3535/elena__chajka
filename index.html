@@ -29,21 +29,14 @@
             align-items: center;
             min-height: 100vh;
             position: relative;
-            /* Добавляем отступ сверху для мишки (может потребоваться корректировка) */
             padding: 60px 10px 20px 10px;
             overflow-x: hidden;
         }
 
         .container {
-            /* Переменная для управления "выглядыванием" мишки */
-            /* Используется в calc() для top мишки. */
-            /* Само по себе значение может не точно соответствовать пикселям выглядывания */
-            /* из-за множителя в calc(), но позволяет пропорционально регулировать */
-            --bear-peek-offset: 65px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (в px) */
-            /* Переменная для относительной ширины мишки */
-            --bear-relative-width: 30%; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (%) */
-            /* Переменная для максимальной ширины мишки */
-            --bear-max-width: 130px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (в px) */
+            --bear-peek-offset: 65px;
+            --bear-relative-width: 30%;
+            --bear-max-width: 130px;
 
             background-color: #fff5f5;
             padding: 35px 30px;
@@ -66,12 +59,9 @@
             display: none;
         }
 
-        /* --- Декоративный мишка --- */
         .bear-decoration {
             position: absolute;
-            /* Позиционируем верхний край мишки НАД верхним краем контейнера */
-            /* Используем предоставленный множитель */
-            top: calc(-1.52 * var(--bear-peek-offset)); /* <<<<< ИЗМЕНЕНО */
+            top: calc(-1.52 * var(--bear-peek-offset));
             left: 50%;
             transform: translateX(-50%);
             width: var(--bear-relative-width);
@@ -228,7 +218,6 @@
             background-color: #f9ecec;
         }
 
-        /* --- Декоративный зайка --- */
         .bunny-decoration {
             position: fixed;
             bottom: 5px;
@@ -241,7 +230,6 @@
             transform: rotate(-5deg);
         }
 
-        /* --- Модальное окно с QR-кодом --- */
         .qr-modal {
             display: flex;
             visibility: hidden;
@@ -289,13 +277,14 @@
             opacity: 1;
         }
 
-
-        .qr-modal img {
+        /* Стили для QR-кода из файла */
+        .qr-modal img.qr-code-image { /* Добавлен класс для специфичности */
             display: block;
-            max-width: 100%;
-            max-height: calc(90vh - 120px);
-            width: auto;
-            height: auto;
+            /* Задаем точный или максимальный размер как у генератора (например 300x300) */
+            max-width: 300px;
+            max-height: 300px;
+            width: auto; /* Позволяем уменьшаться при необходимости */
+            height: auto; /* Сохраняем пропорции */
             min-width: 150px;
             min-height: 150px;
             border-radius: 8px;
@@ -341,17 +330,15 @@
             }
         }
 
-        /* --- Адаптивность --- */
         @media (max-width: 480px) {
              body {
                  padding-top: 50px;
              }
             .container {
-                 --bear-peek-offset: 50px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (маленький экран) */
-                 --bear-max-width: 100px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (маленький экран) */
+                 --bear-peek-offset: 50px;
+                 --bear-max-width: 100px;
                 padding: 30px 20px;
             }
-            /* Стиль top для .bear-decoration унаследует новую переменную */
             h1 {
                 font-size: 2.5em;
             }
@@ -379,7 +366,10 @@
             .qr-modal .qr-container {
                  padding: 20px;
              }
-             .qr-modal img {
+             /* Адаптация размера QR для маленьких экранов */
+             .qr-modal img.qr-code-image {
+                 max-width: calc(100% - 10px); /* Занимает почти всю ширину контейнера */
+                 max-height: calc(90vh - 100px); /* Ограничиваем высоту */
                  min-width: 120px;
                  min-height: 120px;
              }
@@ -430,28 +420,18 @@
     <div class="qr-modal" id="qrModal">
         <div class="qr-container">
             <span class="close" onclick="hideQR()" title="Закрыть">×</span>
-            <img id="qrCodeImage" src="" alt="QR-код ссылки на страницу">
+            <!-- Загружаем QR-код из файла -->
+            <img src="QR.png" alt="QR-код ссылки на страницу" class="qr-code-image">
         </div>
     </div>
 
     <script>
+        // Удалена ссылка на qrCodeImage и функция generateQrCode
         const qrModal = document.getElementById('qrModal');
-        const qrCodeImage = document.getElementById('qrCodeImage');
-
-        function generateQrCode() {
-            if (qrCodeImage) {
-                const currentPageUrl = window.location.href;
-                const qrColor = 'a66f6f';
-                const qrBgColor = 'fff5f5';
-                const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(currentPageUrl)}&color=${qrColor}&bgcolor=${qrBgColor}&qzone=1&format=png`;
-                qrCodeImage.src = qrApiUrl;
-                qrCodeImage.alt = `QR-код для ${currentPageUrl}`;
-            }
-        }
 
         function showQR() {
             if (qrModal) {
-                generateQrCode();
+                // Генерация QR больше не нужна
                 qrModal.classList.add('visible');
             }
         }
@@ -476,8 +456,8 @@
             }
         });
 
-        // Preload images
-        ['Zajka.png', 'Michka.png'].forEach(src => {
+        // Preload images (добавляем QR.png)
+        ['Zajka.png', 'Michka.png', 'QR.png'].forEach(src => {
             const img = new Image();
             img.src = src;
         });
