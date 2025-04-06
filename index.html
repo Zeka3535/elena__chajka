@@ -29,11 +29,22 @@
             align-items: center;
             min-height: 100vh;
             position: relative;
-            padding: 20px 10px;
+            /* Добавляем отступ сверху для мишки (может потребоваться корректировка) */
+            padding: 60px 10px 20px 10px;
             overflow-x: hidden;
         }
 
         .container {
+            /* Переменная для управления "выглядыванием" мишки */
+            /* Используется в calc() для top мишки. */
+            /* Само по себе значение может не точно соответствовать пикселям выглядывания */
+            /* из-за множителя в calc(), но позволяет пропорционально регулировать */
+            --bear-peek-offset: 65px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (в px) */
+            /* Переменная для относительной ширины мишки */
+            --bear-relative-width: 30%; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (%) */
+            /* Переменная для максимальной ширины мишки */
+            --bear-max-width: 130px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (в px) */
+
             background-color: #fff5f5;
             padding: 35px 30px;
             border-radius: 20px;
@@ -42,24 +53,32 @@
             max-width: 450px;
             width: 100%;
             position: relative;
-            animation: fadeInContainer 1s ease-in-out; /* Renamed animation */
+            animation: fadeInContainer 1s ease-in-out;
             z-index: 1;
         }
 
-        /* Renamed animation */
         @keyframes fadeInContainer {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .container::before {
-            content: '♥';
+            display: none;
+        }
+
+        /* --- Декоративный мишка --- */
+        .bear-decoration {
             position: absolute;
-            top: -25px;
+            /* Позиционируем верхний край мишки НАД верхним краем контейнера */
+            /* Используем предоставленный множитель */
+            top: calc(-1.52 * var(--bear-peek-offset)); /* <<<<< ИЗМЕНЕНО */
             left: 50%;
             transform: translateX(-50%);
-            font-size: 30px;
-            color: #d89ca9;
+            width: var(--bear-relative-width);
+            max-width: var(--bear-max-width);
+            height: auto;
+            z-index: 2;
+            pointer-events: none;
         }
 
         .avatar {
@@ -69,6 +88,8 @@
             object-fit: cover;
             margin-bottom: 20px;
             border: 4px solid #f2e4e4;
+            position: relative;
+            z-index: 3;
         }
 
         h1 {
@@ -189,8 +210,8 @@
             -webkit-tap-highlight-color: transparent;
             animation: pulseQrButton 2.5s infinite ease-in-out;
             animation-delay: 2s;
-            opacity: 0.8; /* Set initial opacity for consistency with animation */
-            transform: scale(1); /* Set initial scale */
+            opacity: 0.8;
+            transform: scale(1);
         }
 
          .qr-button:hover, .qr-button:active, .qr-button:focus {
@@ -207,7 +228,7 @@
             background-color: #f9ecec;
         }
 
-        /* --- Декоративный зайка (без анимации) --- */
+        /* --- Декоративный зайка --- */
         .bunny-decoration {
             position: fixed;
             bottom: 5px;
@@ -216,16 +237,15 @@
             height: auto;
             z-index: 5;
             pointer-events: none;
-            opacity: 0.8; /* Просто видим */
-            transform: rotate(-5deg); /* Небольшой наклон */
+            opacity: 0.8;
+            transform: rotate(-5deg);
         }
 
-        /* --- Модальное окно с QR-кодом (исправленная анимация) --- */
+        /* --- Модальное окно с QR-кодом --- */
         .qr-modal {
-            /* Используем visibility для управления доступностью и display для компоновки */
-            display: flex; /* Всегда flex для центрирования */
-            visibility: hidden; /* Скрываем, но оставляем в потоке для transition */
-            opacity: 0; /* Начальное состояние для fade */
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -237,15 +257,13 @@
             align-items: center;
             z-index: 1000;
             padding: 20px;
-            transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; /* Opacity анимируется, visibility меняется мгновенно ПОСЛЕ анимации opacity */
-            /* transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; */ /* Можно и так, но fade opacity важнее */
+            transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
         }
 
         .qr-modal.visible {
-             visibility: visible; /* Делаем видимым */
-             opacity: 1; /* Показываем плавно */
-             transition: opacity 0.3s ease-in-out, visibility 0s linear 0s; /* Visibility меняется сразу при показе */
-             /* transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; */
+             visibility: visible;
+             opacity: 1;
+             transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
         }
 
         .qr-modal .qr-container {
@@ -261,10 +279,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Добавляем небольшую анимацию появления самого контейнера */
             transform: scale(0.95);
             opacity: 0;
-            transition: transform 0.3s ease-out 0.1s, opacity 0.3s ease-out 0.1s; /* Задержка для появления после фона */
+            transition: transform 0.3s ease-out 0.1s, opacity 0.3s ease-out 0.1s;
         }
 
          .qr-modal.visible .qr-container {
@@ -326,12 +343,15 @@
 
         /* --- Адаптивность --- */
         @media (max-width: 480px) {
-            body {
-                 padding: 15px 10px;
-            }
+             body {
+                 padding-top: 50px;
+             }
             .container {
+                 --bear-peek-offset: 50px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (маленький экран) */
+                 --bear-max-width: 100px; /* <<<<< РЕГУЛИРУЙТЕ ЗДЕСЬ (маленький экран) */
                 padding: 30px 20px;
             }
+            /* Стиль top для .bear-decoration унаследует новую переменную */
             h1 {
                 font-size: 2.5em;
             }
@@ -382,7 +402,10 @@
 </head>
 <body>
     <div class="container">
+        <img src="Michka.png" alt="Декоративный мишка" class="bear-decoration">
+
         <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
+
         <h1>Елена Чайка</h1>
         <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
 
@@ -402,10 +425,8 @@
         <i class="fa-solid fa-qrcode"></i>
     </button>
 
-    <!-- Зайка без JS анимации -->
     <img src="Zajka.png" alt="Декоративный зайка" class="bunny-decoration" id="bunnyDecoration">
 
-    <!-- Модальное окно QR -->
     <div class="qr-modal" id="qrModal">
         <div class="qr-container">
             <span class="close" onclick="hideQR()" title="Закрыть">×</span>
@@ -416,7 +437,6 @@
     <script>
         const qrModal = document.getElementById('qrModal');
         const qrCodeImage = document.getElementById('qrCodeImage');
-        // const bunnyElement = document.getElementById('bunnyDecoration'); // Больше не нужен для JS анимации
 
         function generateQrCode() {
             if (qrCodeImage) {
@@ -442,10 +462,8 @@
             }
         }
 
-        // Event listeners
         if (qrModal) {
             qrModal.addEventListener('click', function(event) {
-                // Закрываем только если клик был на самом фоне (qrModal) или кнопке закрытия
                 if (event.target === qrModal || event.target.classList.contains('close')) {
                      hideQR();
                 }
@@ -458,11 +476,11 @@
             }
         });
 
-        // Preload bunny image
-        const bunnyImagePreload = new Image();
-        bunnyImagePreload.src = 'Zajka.png';
-
-        // --- Анимация зайки удалена из JS ---
+        // Preload images
+        ['Zajka.png', 'Michka.png'].forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
 
     </script>
 </body>
