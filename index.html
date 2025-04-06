@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Подключаем Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet"> <!-- Добавил Amatic SC weight 700 для слогана -->
 
     <!-- Встроенные стили CSS -->
     <style>
@@ -69,7 +69,8 @@
 
         h1 {
             font-family: 'Amatic SC', cursive;
-            font-size: 2.8em;
+            font-size: 2.8em; /* Основной размер заголовка */
+            font-weight: 400; /* Стандартная толщина для заголовка */
             color: #a66f6f;
             margin: 0 0 10px;
         }
@@ -84,6 +85,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-bottom: 30px; /* Добавим отступ перед слоганом */
         }
 
         .link-button {
@@ -138,21 +140,28 @@
             }
         }
 
-        /* Общие стили для иконок в кнопках */
         .link-button i {
-            font-size: 1.4em; /* Базовый размер */
+            font-size: 1.4em;
             width: 25px;
             display: inline-block;
             text-align: center;
             line-height: 1;
         }
 
-        /* --- ИЗМЕНЕНО: Коррекция размера иконки телефона --- */
         .link-button.phone i {
-             font-size: 1.15em; /* Новый размер */
+             font-size: 1.15em;
         }
-        /* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
 
+        /* --- ДОБАВЛЕНО: Стили для слогана --- */
+        .slogan {
+            font-family: 'Amatic SC', cursive; /* Используем тот же шрифт */
+            font-size: 1.5em; /* Меньше основного заголовка */
+            font-weight: 700; /* Сделаем чуть жирнее для читаемости */
+            color: #d89ca9;    /* Нежный цвет */
+            margin-top: 10px;  /* Отступ сверху от ссылок (уменьшил т.к. добавил margin-bottom для .links) */
+            line-height: 1.2;
+        }
+        /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
 
         /* Кнопка QR-кода */
         .qr-button {
@@ -266,7 +275,7 @@
                  padding-bottom: 70px;
             }
             .container {
-                padding: 30px 20px;
+                padding: 30px 20px; /* Уменьшаем паддинги контейнера */
                 width: calc(100% - 40px);
                 margin-left: 20px;
                 margin-right: 20px;
@@ -276,15 +285,19 @@
             }
             .link-button {
                 padding: 12px 15px;
-                font-size: 1em; /* Базовый размер текста кнопки меняется */
-                 /* Размер иконок в em будет масштабироваться от этого 1em */
+                font-size: 1em;
             }
-             /* Переопределять специфичный размер иконки телефона для мобильных не обязательно, */
-             /* так как он в em и отмасштабируется вместе с кнопкой. Но можно, если нужно. */
-             /* .link-button.phone i { font-size: 1.1em; } */
+            .links {
+                 margin-bottom: 20px; /* Уменьшаем отступ перед слоганом на мобильных */
+            }
+            .slogan {
+                 font-size: 1.3em; /* Делаем слоган чуть меньше на мобильных */
+                 margin-top: 5px;
+            }
 
             .qr-modal .qr-container {
                  margin-bottom: 55px;
+                 padding: 20px; /* Уменьшаем паддинг QR контейнера */
              }
             .qr-button {
                 bottom: 20px;
@@ -313,9 +326,14 @@
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
             <a href="tel:+375297955001" class="link-button phone">
-                <i class="fa-solid fa-phone"></i> Позвонить <!-- Иконка телефона -->
+                <i class="fa-solid fa-phone"></i> Позвонить
             </a>
         </div>
+
+        <!-- --- ДОБАВЛЕН СЛОГАН --- -->
+        <div class="slogan">Сделано с любовью ♥</div>
+        <!-- --- КОНЕЦ ДОБАВЛЕНИЯ --- -->
+
     </div>
 
     <!-- Кнопка QR-кода вне .container -->
