@@ -39,7 +39,6 @@
             max-width: 450px;
             width: 90%;
             position: relative;
-            /* Анимация появления контейнера */
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -96,7 +95,6 @@
             font-size: 1.1em;
             font-weight: 400;
             background-color: #fefafa;
-            /* Transform убран из transition, так как он теперь только в @media */
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             display: flex;
             align-items: center;
@@ -105,60 +103,56 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Базовый :hover только с фоном (работает везде) */
         .link-button:hover {
             background-color: #f2e4e4;
         }
-
-        /* Стиль для активного состояния (нажатия/касания) */
-        .link-button:active {
-            background-color: #e8dada; /* Чуть темнее фон при нажатии */
-            /* --- УДАЛЕНО: transform: scale(0.98); --- */
-        }
-
-        /* Применяем цвета и для :hover, и для :active */
-        .link-button.instagram:hover,
-        .link-button.instagram:active {
+        .link-button.instagram:hover {
             border-color: #d89ca9;
             color: #d89ca9;
-            background-color: #f2e4e4;
         }
-
-        .link-button.phone:hover,
-        .link-button.phone:active {
+        .link-button.phone:hover {
             border-color: #b8c8b8;
             color: #b8c8b8;
-            background-color: #f2e4e4;
         }
 
-        /* Применяем "сложные" эффекты (transform, box-shadow) только для устройств с реальным ховером (мышь) */
         @media (hover: hover) {
             .link-button {
-                /* Возвращаем transform и box-shadow в transition только для hover-устройств */
                  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             }
             .link-button:hover {
                 background-color: #f2e4e4;
-                transform: scale(1.05); /* Возвращаем scale для ховера мышью */
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Возвращаем тень для ховера мышью */
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
-
-            /* Специфичные стили для hover на hover-устройствах */
+            .link-button:active {
+                 transform: scale(1.02);
+                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
             .link-button.instagram:hover {
                 border-color: #d89ca9;
                 color: #d89ca9;
             }
-
             .link-button.phone:hover {
                 border-color: #b8c8b8;
                 color: #b8c8b8;
             }
         }
 
+        /* Общие стили для иконок в кнопках */
         .link-button i {
-            font-size: 1.4em;
+            font-size: 1.4em; /* Базовый размер */
             width: 25px;
+            display: inline-block;
+            text-align: center;
+            line-height: 1;
         }
+
+        /* --- ИЗМЕНЕНО: Коррекция размера иконки телефона --- */
+        .link-button.phone i {
+             font-size: 1.15em; /* Новый размер */
+        }
+        /* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
+
 
         /* Кнопка QR-кода */
         .qr-button {
@@ -178,18 +172,17 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Эффект hover для QR кнопки тоже лучше ограничить @media */
         @media (hover: hover) {
            .qr-button:hover {
                opacity: 1;
                transform: scale(1.1);
            }
+           .qr-button:active {
+               transform: scale(1.05);
+           }
         }
-        /* Добавим :active для QR кнопки для тач устройств */
         .qr-button:active {
-            opacity: 1; /* Делаем ярче при нажатии */
-            /* Можно добавить легкий transform и сюда, если он не будет залипать */
-            /* transform: scale(0.95); */
+            opacity: 0.8;
         }
 
         /* Модальное окно с QR-кодом */
@@ -204,6 +197,8 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .qr-modal .qr-container {
@@ -212,31 +207,57 @@
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             position: relative;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
         }
 
         .qr-modal img {
             display: block;
-            max-width: 300px;
-            max-height: 300px;
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 150px;
+            min-height: 150px;
+            border-radius: 5px;
         }
 
+        /* Кнопка закрытия QR */
         .qr-modal .close {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.8em;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f2e4e4;
             color: #a66f6f;
-            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.6em;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             line-height: 1;
+            cursor: pointer;
             -webkit-tap-highlight-color: transparent;
-            /* Добавим небольшой padding для увеличения области нажатия */
-            padding: 5px;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 0;
         }
-        /* Добавим :active для крестика */
+
+        .qr-modal .close:hover {
+             background-color: #e8dada;
+             transform: translateX(-50%) scale(1.1);
+             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+             color: #a66f6f;
+        }
         .qr-modal .close:active {
-            color: #5f4b4b; /* Темнее при нажатии */
-            /* transform: scale(0.9); */ /* Можно попробовать, если не залипнет */
+             background-color: #d8c8c8;
+             transform: translateX(-50%) scale(1);
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         /* Адаптивность */
@@ -255,28 +276,33 @@
             }
             .link-button {
                 padding: 12px 15px;
-                font-size: 1em;
+                font-size: 1em; /* Базовый размер текста кнопки меняется */
+                 /* Размер иконок в em будет масштабироваться от этого 1em */
             }
-            .qr-modal img {
-                max-width: 80vw;
-                max-height: 80vw;
-            }
+             /* Переопределять специфичный размер иконки телефона для мобильных не обязательно, */
+             /* так как он в em и отмасштабируется вместе с кнопкой. Но можно, если нужно. */
+             /* .link-button.phone i { font-size: 1.1em; } */
+
+            .qr-modal .qr-container {
+                 margin-bottom: 55px;
+             }
             .qr-button {
                 bottom: 20px;
                 right: 20px;
                 font-size: 1.7em;
             }
              .qr-modal .close {
-                 top: 10px;
-                 right: 10px;
-                 font-size: 1.5em;
+                 bottom: -60px;
+                 width: 36px;
+                 height: 36px;
+                 font-size: 1.4em;
              }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Добавь фото куклы или Елены, если есть -->
+        <!-- Аватар -->
         <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
 
         <h1>Елена Чайка</h1>
@@ -287,7 +313,7 @@
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
             <a href="tel:+375297955001" class="link-button phone">
-                <i class="fa-solid fa-phone"></i> Позвонить
+                <i class="fa-solid fa-phone"></i> Позвонить <!-- Иконка телефона -->
             </a>
         </div>
     </div>
@@ -305,7 +331,7 @@
         </div>
     </div>
 
-    <!-- JavaScript для управления модальным окном -->
+    <!-- JavaScript для управления модальным окном (без изменений) -->
     <script>
         const qrModal = document.getElementById('qrModal');
 
@@ -321,17 +347,19 @@
             }
         }
 
-        // Закрытие модального окна по клику вне его области
         if (qrModal) {
             qrModal.addEventListener('click', function(event) {
-                // Проверяем, что клик был именно по фону (qrModal), а не по его дочерним элементам (qr-container и его содержимому)
-                if (event.target === qrModal) {
+                const qrContainer = qrModal.querySelector('.qr-container');
+                if (qrContainer && !qrContainer.contains(event.target)) {
+                     if (!event.target.classList.contains('close')) {
+                          hideQR();
+                     }
+                } else if (event.target.classList.contains('close')) {
                     hideQR();
                 }
             });
         }
 
-        // Закрытие модального окна по нажатию клавиши Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && qrModal && qrModal.style.display === 'flex') {
                  hideQR();
