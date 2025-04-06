@@ -25,10 +25,10 @@
             min-height: 100vh;
             box-sizing: border-box;
             position: relative;
-            padding-bottom: 80px;
-            padding-left: 10px;
-            padding-right: 10px;
-            overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку из-за зайки/кнопки */
+            padding-bottom: 80px; /* Базовый отступ снизу */
+            padding-left: 10px; /* Базовый отступ слева */
+            padding-right: 10px; /* Базовый отступ справа */
+            overflow-x: hidden;
         }
 
         .container {
@@ -206,19 +206,12 @@
             z-index: 5;
             opacity: 0.85;
             pointer-events: none;
-            animation: fadeInBunny 1.5s 0.3s ease-out backwards;
+            /* --- УДАЛЕНО: Анимация --- */
+            /* animation: fadeInBunny 1.5s 0.3s ease-out backwards; */
         }
 
-        @keyframes fadeInBunny {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                 opacity: 0.85;
-                 transform: translateY(0);
-            }
-        }
+        /* --- УДАЛЕНО: @keyframes fadeInBunny --- */
+
 
         /* Модальное окно с QR-кодом */
         .qr-modal {
@@ -298,13 +291,15 @@
         /* Адаптивность */
         @media (max-width: 480px) {
             body {
+                 /* --- ИЗМЕНЕНО: Заданные параметры padding --- */
                  padding-bottom: 70px;
-                 padding-left: 5px;
-                 padding-right: 5px;
+                 padding-left: 10px;
+                 padding-right: 10px;
+                 /* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
             }
             .container {
                 padding: 30px 20px;
-                width: calc(100% - 30px);
+                width: calc(100% - 20px); /* Учитываем новые паддинги body */
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -315,7 +310,7 @@
                 padding: 12px 15px;
                 font-size: 1em;
             }
-             .description { /* Уменьшаем шрифт описания на мобильных */
+             .description {
                  font-size: 1em;
              }
             .links {
@@ -330,7 +325,8 @@
             .bunny-decoration {
                  width: 90px;
                  bottom: 5px;
-                 left: 5px;
+                 /* Скорректируем left с учетом нового padding body */
+                 left: 10px;
             }
 
             .qr-modal .qr-container {
@@ -339,7 +335,8 @@
              }
             .qr-button {
                 bottom: 20px;
-                right: 20px;
+                 /* Скорректируем right с учетом нового padding body */
+                 right: 10px;
                 font-size: 1.7em;
             }
              .qr-modal .close {
@@ -357,9 +354,7 @@
         <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
 
         <h1>Елена Чайка</h1>
-        <!-- --- ИЗМЕНЕНО ОПИСАНИЕ --- -->
         <p class="description">Интерьерные куклы, зайки и мишки Тедди</p>
-        <!-- --- КОНЕЦ ИЗМЕНЕНИЯ --- -->
 
         <div class="links">
             <a href="https://www.instagram.com/elena__chajka" target="_blank" class="link-button instagram">
