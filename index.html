@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Елена Чайка - Рукоделие</title>
 
-    <!-- Подключаем иконки Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
-    <!-- Подключаем Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
-
-    <!-- Встроенные стили CSS -->
     <style>
+        html {
+            box-sizing: border-box;
+            height: 100%;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
+            font-weight: 300;
             background-color: #f9ecec;
             background-image: url('https://www.transparenttextures.com/patterns/fabric.png');
             color: #5f4b4b;
@@ -23,34 +28,29 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            box-sizing: border-box;
             position: relative;
-            padding-bottom: 80px; /* Базовый отступ снизу */
-            padding-left: 10px; /* Базовый отступ слева */
-            padding-right: 10px; /* Базовый отступ справа */
+            padding: 20px 10px;
             overflow-x: hidden;
         }
 
         .container {
             background-color: #fff5f5;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            padding: 40px;
+            padding: 35px 30px;
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
             max-width: 450px;
-            width: 90%;
+            width: 100%;
             position: relative;
-            animation: fadeIn 1s ease-in-out;
+            animation: fadeInContainer 1s ease-in-out; /* Renamed animation */
             z-index: 1;
         }
 
-        @keyframes fadeIn {
+        /* Renamed animation */
+        @keyframes fadeInContainer {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
 
         .container::before {
             content: '♥';
@@ -73,16 +73,27 @@
 
         h1 {
             font-family: 'Amatic SC', cursive;
-            font-size: 2.8em;
-            font-weight: 400;
+            font-size: 3em;
+            font-weight: 700;
             color: #a66f6f;
             margin: 0 0 10px;
+            line-height: 1.1;
         }
 
         .description {
             font-size: 1.1em;
             color: #7a6a6a;
             margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .slogan {
+            font-family: 'Amatic SC', cursive;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #d89ca9;
+            margin-top: 15px;
+            line-height: 1.2;
         }
 
         .links {
@@ -101,47 +112,12 @@
             font-size: 1.1em;
             font-weight: 400;
             background-color: #fefafa;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             -webkit-tap-highlight-color: transparent;
-        }
-
-        .link-button:hover {
-            background-color: #f2e4e4;
-        }
-        .link-button.instagram:hover {
-            border-color: #d89ca9;
-            color: #d89ca9;
-        }
-        .link-button.phone:hover {
-            border-color: #b8c8b8;
-            color: #b8c8b8;
-        }
-
-        @media (hover: hover) {
-            .link-button {
-                 transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            }
-            .link-button:hover {
-                background-color: #f2e4e4;
-                transform: scale(1.05);
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            }
-            .link-button:active {
-                 transform: scale(1.02);
-                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            }
-            .link-button.instagram:hover {
-                border-color: #d89ca9;
-                color: #d89ca9;
-            }
-            .link-button.phone:hover {
-                border-color: #b8c8b8;
-                color: #b8c8b8;
-            }
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         .link-button i {
@@ -153,211 +129,265 @@
         }
 
         .link-button.phone i {
-             font-size: 1.15em;
+             font-size: 1.2em;
         }
 
-        .slogan {
-            font-family: 'Amatic SC', cursive;
-            font-size: 1.5em;
-            font-weight: 700;
-            color: #d89ca9;
-            margin-top: 10px;
-            line-height: 1.2;
+        .link-button:active {
+             background-color: #ede2e2;
+             transform: scale(1.01);
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+         }
+
+        @media (hover: hover) {
+            .link-button:hover {
+                background-color: #f2e4e4;
+                transform: scale(1.03);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+            .link-button.instagram:hover {
+                border-color: #e7c7cf;
+                color: #c58a99;
+            }
+            .link-button.phone:hover {
+                border-color: #cdd8cd;
+                color: #a6b6a6;
+            }
         }
 
-        /* Кнопка QR-кода */
+        @keyframes pulseQrButton {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 3px 10px rgba(95, 75, 75, 0.08);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 15px rgba(95, 75, 75, 0.15);
+                opacity: 1;
+            }
+        }
+
         .qr-button {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            font-size: 2em;
-            background: none;
-            border: none;
-            color: #d89ca9;
+            font-size: 1.8em;
+            background: #fff5f5e0;
+            backdrop-filter: blur(3px);
+            border: 1px solid #f2e4e4;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #a66f6f;
             cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
             z-index: 50;
-            padding: 5px;
-            line-height: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
             -webkit-tap-highlight-color: transparent;
+            animation: pulseQrButton 2.5s infinite ease-in-out;
+            animation-delay: 2s;
+            opacity: 0.8; /* Set initial opacity for consistency with animation */
+            transform: scale(1); /* Set initial scale */
         }
 
-        @media (hover: hover) {
-           .qr-button:hover {
-               opacity: 1;
-               transform: scale(1.1);
-           }
-           .qr-button:active {
-               transform: scale(1.05);
-           }
-        }
+         .qr-button:hover, .qr-button:active, .qr-button:focus {
+             animation: none;
+             opacity: 1;
+             transform: scale(1.1);
+             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+             background-color: #fff5f5;
+         }
+
         .qr-button:active {
-            opacity: 0.8;
+            transform: scale(1.05);
+            opacity: 0.9;
+            background-color: #f9ecec;
         }
 
-        /* Стили для декоративного зайки */
+        /* --- Декоративный зайка (без анимации) --- */
         .bunny-decoration {
             position: fixed;
-            bottom: 10px;
-            left: 8px;
-            width: 120px;
+            bottom: 5px;
+            left: 5px;
+            width: 110px;
             height: auto;
             z-index: 5;
-            opacity: 0.85;
             pointer-events: none;
-            /* --- УДАЛЕНО: Анимация --- */
-            /* animation: fadeInBunny 1.5s 0.3s ease-out backwards; */
+            opacity: 0.8; /* Просто видим */
+            transform: rotate(-5deg); /* Небольшой наклон */
         }
 
-        /* --- УДАЛЕНО: @keyframes fadeInBunny --- */
-
-
-        /* Модальное окно с QR-кодом */
+        /* --- Модальное окно с QR-кодом (исправленная анимация) --- */
         .qr-modal {
-            display: none;
+            /* Используем visibility для управления доступностью и display для компоновки */
+            display: flex; /* Всегда flex для центрирования */
+            visibility: hidden; /* Скрываем, но оставляем в потоке для transition */
+            opacity: 0; /* Начальное состояние для fade */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(95, 75, 75, 0.6);
+            backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 20px;
-            box-sizing: border-box;
+            transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; /* Opacity анимируется, visibility меняется мгновенно ПОСЛЕ анимации opacity */
+            /* transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; */ /* Можно и так, но fade opacity важнее */
+        }
+
+        .qr-modal.visible {
+             visibility: visible; /* Делаем видимым */
+             opacity: 1; /* Показываем плавно */
+             transition: opacity 0.3s ease-in-out, visibility 0s linear 0s; /* Visibility меняется сразу при показе */
+             /* transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; */
         }
 
         .qr-modal .qr-container {
             background-color: #fff5f5;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             position: relative;
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 60px;
+            /* Добавляем небольшую анимацию появления самого контейнера */
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease-out 0.1s, opacity 0.3s ease-out 0.1s; /* Задержка для появления после фона */
         }
+
+         .qr-modal.visible .qr-container {
+            transform: scale(1);
+            opacity: 1;
+        }
+
 
         .qr-modal img {
             display: block;
             max-width: 100%;
-            max-height: 100%;
+            max-height: calc(90vh - 120px);
+            width: auto;
+            height: auto;
             min-width: 150px;
             min-height: 150px;
-            border-radius: 5px;
+            border-radius: 8px;
+            border: 5px solid #fff5f5;
         }
 
-        /* Кнопка закрытия QR */
         .qr-modal .close {
             position: absolute;
-            bottom: -70px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: -18px;
+            right: -18px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             background-color: #f2e4e4;
             color: #a66f6f;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            font-size: 1.6em;
-            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            font-size: 1.8em;
+            font-weight: normal;
             display: flex;
             align-items: center;
             justify-content: center;
             line-height: 1;
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
             padding: 0;
+            border: 2px solid #fff5f5;
         }
 
-        .qr-modal .close:hover {
-             background-color: #e8dada;
-             transform: translateX(-50%) scale(1.1);
-             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-             color: #a66f6f;
-        }
         .qr-modal .close:active {
              background-color: #d8c8c8;
-             transform: translateX(-50%) scale(1);
-             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+             transform: scale(1);
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+             transition-duration: 0.1s;
         }
 
-        /* Адаптивность */
+        @media (hover: hover) {
+            .qr-modal .close:hover {
+                 background-color: #e8dada;
+                 transform: scale(1.1) rotate(90deg);
+                 box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+                 color: #8b5e5e;
+            }
+        }
+
+        /* --- Адаптивность --- */
         @media (max-width: 480px) {
             body {
-                 /* --- ИЗМЕНЕНО: Заданные параметры padding --- */
-                 padding-bottom: 70px;
-                 padding-left: 10px;
-                 padding-right: 10px;
-                 /* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
+                 padding: 15px 10px;
             }
             .container {
                 padding: 30px 20px;
-                width: calc(100% - 20px); /* Учитываем новые паддинги body */
-                margin-left: auto;
-                margin-right: auto;
             }
             h1 {
-                font-size: 2.2em;
+                font-size: 2.5em;
             }
             .link-button {
                 padding: 12px 15px;
-                font-size: 1em;
+                font-size: 1.05em;
             }
              .description {
                  font-size: 1em;
+                 margin-bottom: 25px;
              }
             .links {
-                 margin-bottom: 20px;
+                 gap: 12px;
+                 margin-bottom: 25px;
             }
             .slogan {
-                 font-size: 1.3em;
-                 margin-top: 5px;
+                 font-size: 1.4em;
+                 margin-top: 10px;
             }
-
-            /* Адаптация зайки */
             .bunny-decoration {
                  width: 90px;
-                 bottom: 5px;
-                 /* Скорректируем left с учетом нового padding body */
-                 left: 10px;
+                 bottom: 3px;
+                 left: 3px;
             }
-
             .qr-modal .qr-container {
-                 margin-bottom: 55px;
                  padding: 20px;
              }
+             .qr-modal img {
+                 min-width: 120px;
+                 min-height: 120px;
+             }
             .qr-button {
-                bottom: 20px;
-                 /* Скорректируем right с учетом нового padding body */
-                 right: 10px;
-                font-size: 1.7em;
+                width: 45px;
+                height: 45px;
+                font-size: 1.6em;
+                bottom: 15px;
+                right: 15px;
             }
              .qr-modal .close {
-                 bottom: -60px;
                  width: 36px;
                  height: 36px;
-                 font-size: 1.4em;
+                 font-size: 1.6em;
+                 top: -15px;
+                 right: -15px;
              }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Аватар -->
         <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
-
         <h1>Елена Чайка</h1>
-        <p class="description">Интерьерные куклы, зайки и мишки Тедди</p>
+        <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
 
         <div class="links">
-            <a href="https://www.instagram.com/elena__chajka" target="_blank" class="link-button instagram">
+            <a href="https://www.instagram.com/elena__chajka" target="_blank" rel="noopener noreferrer" class="link-button instagram">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
             <a href="tel:+375297955001" class="link-button phone">
@@ -365,60 +395,74 @@
             </a>
         </div>
 
-        <div class="slogan">Сделано с любовью</div>
-
+        <div class="slogan">Сделано с теплом и любовью ♥</div>
     </div>
 
-    <!-- Кнопка QR-кода вне .container -->
-    <button class="qr-button" onclick="showQR()" title="Показать QR-код">
+    <button class="qr-button" onclick="showQR()" title="Показать QR-код этой страницы">
         <i class="fa-solid fa-qrcode"></i>
     </button>
 
-    <!-- Изображение зайки -->
-    <img src="Zajka.png" alt="Декоративный зайка" class="bunny-decoration">
+    <!-- Зайка без JS анимации -->
+    <img src="Zajka.png" alt="Декоративный зайка" class="bunny-decoration" id="bunnyDecoration">
 
-    <!-- Модальное окно с QR-кодом -->
+    <!-- Модальное окно QR -->
     <div class="qr-modal" id="qrModal">
         <div class="qr-container">
             <span class="close" onclick="hideQR()" title="Закрыть">×</span>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://zeka3535.github.io/elena__chajka&color=a66f6f&bgcolor=fff5f5" alt="QR-код ссылки на страницу">
+            <img id="qrCodeImage" src="" alt="QR-код ссылки на страницу">
         </div>
     </div>
 
-    <!-- JavaScript для управления модальным окном (без изменений) -->
     <script>
         const qrModal = document.getElementById('qrModal');
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        // const bunnyElement = document.getElementById('bunnyDecoration'); // Больше не нужен для JS анимации
+
+        function generateQrCode() {
+            if (qrCodeImage) {
+                const currentPageUrl = window.location.href;
+                const qrColor = 'a66f6f';
+                const qrBgColor = 'fff5f5';
+                const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(currentPageUrl)}&color=${qrColor}&bgcolor=${qrBgColor}&qzone=1&format=png`;
+                qrCodeImage.src = qrApiUrl;
+                qrCodeImage.alt = `QR-код для ${currentPageUrl}`;
+            }
+        }
 
         function showQR() {
             if (qrModal) {
-                qrModal.style.display = 'flex';
+                generateQrCode();
+                qrModal.classList.add('visible');
             }
         }
 
         function hideQR() {
              if (qrModal) {
-                qrModal.style.display = 'none';
+                qrModal.classList.remove('visible');
             }
         }
 
+        // Event listeners
         if (qrModal) {
             qrModal.addEventListener('click', function(event) {
-                const qrContainer = qrModal.querySelector('.qr-container');
-                if (qrContainer && !qrContainer.contains(event.target)) {
-                     if (!event.target.classList.contains('close')) {
-                          hideQR();
-                     }
-                } else if (event.target.classList.contains('close')) {
-                    hideQR();
+                // Закрываем только если клик был на самом фоне (qrModal) или кнопке закрытия
+                if (event.target === qrModal || event.target.classList.contains('close')) {
+                     hideQR();
                 }
             });
         }
 
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && qrModal && qrModal.style.display === 'flex') {
+            if (event.key === 'Escape' && qrModal?.classList.contains('visible')) {
                  hideQR();
             }
         });
+
+        // Preload bunny image
+        const bunnyImagePreload = new Image();
+        bunnyImagePreload.src = 'Zajka.png';
+
+        // --- Анимация зайки удалена из JS ---
 
     </script>
 </body>
