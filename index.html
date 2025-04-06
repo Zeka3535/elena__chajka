@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Елена Чайка - Куклы Тильда</title>
+
+    <!-- Подключаем иконки Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Подключаем Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Встроенные стили CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9ecec;
+            background-image: url('https://www.transparenttextures.com/patterns/fabric.png');
+            color: #5f4b4b;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .container {
+            background-color: #fff5f5;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        .container::before {
+            content: '♥';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: #d89ca9;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #f2e4e4;
+        }
+
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.8em;
+            color: #a66f6f;
+            margin: 0 0 10px;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #7a6a6a;
+            margin-bottom: 30px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-button {
+            padding: 15px 20px;
+            border: 2px solid #f2e4e4;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #5f4b4b;
+            font-size: 1.1em;
+            font-weight: 400;
+            background-color: #fefafa;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .link-button:hover {
+            background-color: #f2e4e4;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-button.instagram:hover {
+            border-color: #d89ca9;
+            color: #d89ca9;
+        }
+
+        .link-button.tiktok:hover {
+            border-color: #a66f6f;
+            color: #a66f6f;
+        }
+
+        .link-button.phone:hover {
+            border-color: #b8c8b8;
+            color: #b8c8b8;
+        }
+
+        .link-button i {
+            font-size: 1.4em;
+            width: 25px;
+        }
+
+        /* Кнопка QR-кода */
+        .qr-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #d89ca9;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .qr-button:hover {
+            opacity: 1;
+        }
+
+        /* Модальное окно с QR-кодом */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .qr-modal .qr-container {
+            background-color: #fff5f5;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .qr-modal img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+
+        .qr-modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #a66f6f;
+            font-size: 1.5em;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Анимация появления контейнера */
+        .container {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .link-button {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+            .qr-modal img {
+                max-width: 250px;
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Добавь фото куклы или Елены, если есть -->
+        <!-- <img src="images/tilde-doll.jpg" alt="Кукла Тильда" class="avatar"> -->
+
+        <h1>Елена Чайка</h1>
+        <p class="description">Создаю кукол Тильда с душой</p>
+
+        <div class="links">
+            <a href="https://www.instagram.com/elena__chajka" target="_blank" class="link-button instagram">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://tiktok.com/@elena__chajka" target="_blank" class="link-button tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="tel:+375333234000" class="link-button phone">
+                <i class="fa-solid fa-phone"></i> Позвонить
+            </a>
+        </div>
+
+        <!-- Кнопка QR-кода -->
+        <button class="qr-button" onclick="showQR()">
+            <i class="fa-solid fa-qrcode"></i>
+        </button>
+    </div>
+
+    <!-- Модальное окно с QR-кодом -->
+    <div class="qr-modal" id="qrModal">
+        <div class="qr-container">
+            <span class="close" onclick="hideQR()">×</span>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.instagram.com/elena__chajka&color=a66f6f&bgcolor=fff5f5&logo=https://www.pngall.com/wp-content/uploads/2016/04/Teddy-Bear-PNG-Clipart.png" alt="QR-код с мишкой">
+        </div>
+    </div>
+
+    <!-- JavaScript для управления модальным окном -->
+    <script>
+        function showQR() {
+            document.getElementById('qrModal').style.display = 'flex';
+        }
+
+        function hideQR() {
+            document.getElementById('qrModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
