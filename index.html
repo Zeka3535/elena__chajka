@@ -19,21 +19,17 @@
             background-image: url('https://www.transparenttextures.com/patterns/fabric.png');
             color: #5f4b4b;
             margin: 0;
-            /* Убираем padding у body, чтобы кнопка QR прижалась к краю окна */
-            /* padding: 20px; */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
             position: relative;
-             /* Добавляем нижний отступ, чтобы контент не перекрывался кнопкой QR */
-            padding-bottom: 70px; /* Можно подстроить значение */
+            padding-bottom: 80px; /* Отступ для кнопки QR */
         }
 
         .container {
             background-color: #fff5f5;
-            /* Добавляем отступы сверху/снизу для компенсации убранного padding у body */
             margin-top: 20px;
             margin-bottom: 20px;
             padding: 40px;
@@ -41,9 +37,17 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
             max-width: 450px;
-            width: 90%; /* Используем % для лучшей адаптивности */
-            position: relative; /* Остается relative для псевдоэлемента */
+            width: 90%;
+            position: relative;
+            /* Анимация появления контейнера */
+            animation: fadeIn 1s ease-in-out;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
 
         .container::before {
             content: '♥';
@@ -92,27 +96,63 @@
             font-size: 1.1em;
             font-weight: 400;
             background-color: #fefafa;
-            transition: all 0.3s ease;
+            /* Transform убран из transition, так как он теперь только в @media */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        /* Базовый :hover только с фоном (работает везде) */
         .link-button:hover {
             background-color: #f2e4e4;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .link-button.instagram:hover {
+        /* Стиль для активного состояния (нажатия/касания) */
+        .link-button:active {
+            background-color: #e8dada; /* Чуть темнее фон при нажатии */
+            /* --- УДАЛЕНО: transform: scale(0.98); --- */
+        }
+
+        /* Применяем цвета и для :hover, и для :active */
+        .link-button.instagram:hover,
+        .link-button.instagram:active {
             border-color: #d89ca9;
             color: #d89ca9;
+            background-color: #f2e4e4;
         }
 
-        .link-button.phone:hover {
+        .link-button.phone:hover,
+        .link-button.phone:active {
             border-color: #b8c8b8;
             color: #b8c8b8;
+            background-color: #f2e4e4;
+        }
+
+        /* Применяем "сложные" эффекты (transform, box-shadow) только для устройств с реальным ховером (мышь) */
+        @media (hover: hover) {
+            .link-button {
+                /* Возвращаем transform и box-shadow в transition только для hover-устройств */
+                 transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            }
+            .link-button:hover {
+                background-color: #f2e4e4;
+                transform: scale(1.05); /* Возвращаем scale для ховера мышью */
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Возвращаем тень для ховера мышью */
+            }
+
+            /* Специфичные стили для hover на hover-устройствах */
+            .link-button.instagram:hover {
+                border-color: #d89ca9;
+                color: #d89ca9;
+            }
+
+            .link-button.phone:hover {
+                border-color: #b8c8b8;
+                color: #b8c8b8;
+            }
         }
 
         .link-button i {
@@ -122,23 +162,34 @@
 
         /* Кнопка QR-кода */
         .qr-button {
-            /* --- ИЗМЕНЕНО --- */
-            position: fixed; /* Позиционирование относительно окна браузера */
-            bottom: 20px;    /* Отступ снизу */
-            right: 20px;     /* Отступ справа */
-            /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            font-size: 2em;
             background: none;
             border: none;
-            font-size: 1.5em; /* Немного увеличим размер для заметности */
             color: #d89ca9;
             cursor: pointer;
-            opacity: 0.6; /* Чуть заметнее */
-            transition: opacity 0.3s ease;
-            z-index: 50; /* Чтобы была поверх контента, но под модальным окном */
+            opacity: 0.6;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 50;
+            padding: 5px;
+            line-height: 1;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .qr-button:hover {
-            opacity: 1;
+        /* Эффект hover для QR кнопки тоже лучше ограничить @media */
+        @media (hover: hover) {
+           .qr-button:hover {
+               opacity: 1;
+               transform: scale(1.1);
+           }
+        }
+        /* Добавим :active для QR кнопки для тач устройств */
+        .qr-button:active {
+            opacity: 1; /* Делаем ярче при нажатии */
+            /* Можно добавить легкий transform и сюда, если он не будет залипать */
+            /* transform: scale(0.95); */
         }
 
         /* Модальное окно с QR-кодом */
@@ -171,32 +222,31 @@
 
         .qr-modal .close {
             position: absolute;
-            /* --- ИЗМЕНЕНО --- */
-            top: 15px;    /* Увеличили отступ сверху */
-            right: 15px;   /* Увеличили отступ справа */
-            font-size: 1.8em; /* Сделали крестик чуть больше */
-            /* --- КОНЕЦ ИЗМЕНЕНИЙ --- */
+            top: 15px;
+            right: 15px;
+            font-size: 1.8em;
             color: #a66f6f;
             cursor: pointer;
             font-weight: bold;
-            line-height: 1; /* Убираем возможный лишний отступ у крестика */
+            line-height: 1;
+            -webkit-tap-highlight-color: transparent;
+            /* Добавим небольшой padding для увеличения области нажатия */
+            padding: 5px;
         }
-
-        /* Анимация появления контейнера */
-        .container {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Добавим :active для крестика */
+        .qr-modal .close:active {
+            color: #5f4b4b; /* Темнее при нажатии */
+            /* transform: scale(0.9); */ /* Можно попробовать, если не залипнет */
         }
 
         /* Адаптивность */
         @media (max-width: 480px) {
+            body {
+                 padding-bottom: 70px;
+            }
             .container {
-                padding: 30px 20px; /* Уменьшаем боковые отступы на маленьких экранах */
-                width: calc(100% - 40px); /* Ширина минус боковые отступы */
+                padding: 30px 20px;
+                width: calc(100% - 40px);
                 margin-left: 20px;
                 margin-right: 20px;
             }
@@ -208,16 +258,14 @@
                 font-size: 1em;
             }
             .qr-modal img {
-                max-width: 80vw; /* Ограничиваем размер QR по ширине экрана */
+                max-width: 80vw;
                 max-height: 80vw;
             }
-             /* Уменьшаем отступы кнопки QR на мобильных */
             .qr-button {
-                bottom: 15px;
-                right: 15px;
-                font-size: 1.3em;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.7em;
             }
-            /* Уменьшаем отступы крестика на мобильных */
              .qr-modal .close {
                  top: 10px;
                  right: 10px;
@@ -229,7 +277,7 @@
 <body>
     <div class="container">
         <!-- Добавь фото куклы или Елены, если есть -->
-        <!-- <img src="images/tilde-doll.jpg" alt="Кукла Тильда" class="avatar"> -->
+        <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
 
         <h1>Елена Чайка</h1>
         <p class="description">Интересные куклы, зайки и мишки Тедди</p>
@@ -242,30 +290,54 @@
                 <i class="fa-solid fa-phone"></i> Позвонить
             </a>
         </div>
-
-        <!-- Кнопка QR-кода (HTML остается тем же) -->
-        <button class="qr-button" onclick="showQR()">
-            <i class="fa-solid fa-qrcode"></i>
-        </button>
     </div>
 
-    <!-- Модальное окно с QR-кодом (HTML остается тем же) -->
+    <!-- Кнопка QR-кода вне .container -->
+    <button class="qr-button" onclick="showQR()" title="Показать QR-код">
+        <i class="fa-solid fa-qrcode"></i>
+    </button>
+
+    <!-- Модальное окно с QR-кодом -->
     <div class="qr-modal" id="qrModal">
         <div class="qr-container">
-            <span class="close" onclick="hideQR()">×</span>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://zeka3535.github.io/elena__chajka&color=a66f6f&bgcolor=fff5f5" alt="QR-код">
+            <span class="close" onclick="hideQR()" title="Закрыть">×</span>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://zeka3535.github.io/elena__chajka&color=a66f6f&bgcolor=fff5f5" alt="QR-код ссылки на страницу">
         </div>
     </div>
 
-    <!-- JavaScript для управления модальным окном (остается без изменений) -->
+    <!-- JavaScript для управления модальным окном -->
     <script>
+        const qrModal = document.getElementById('qrModal');
+
         function showQR() {
-            document.getElementById('qrModal').style.display = 'flex';
+            if (qrModal) {
+                qrModal.style.display = 'flex';
+            }
         }
 
         function hideQR() {
-            document.getElementById('qrModal').style.display = 'none';
+             if (qrModal) {
+                qrModal.style.display = 'none';
+            }
         }
+
+        // Закрытие модального окна по клику вне его области
+        if (qrModal) {
+            qrModal.addEventListener('click', function(event) {
+                // Проверяем, что клик был именно по фону (qrModal), а не по его дочерним элементам (qr-container и его содержимому)
+                if (event.target === qrModal) {
+                    hideQR();
+                }
+            });
+        }
+
+        // Закрытие модального окна по нажатию клавиши Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && qrModal && qrModal.style.display === 'flex') {
+                 hideQR();
+            }
+        });
+
     </script>
 </body>
 </html>
