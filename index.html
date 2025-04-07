@@ -48,17 +48,16 @@
             min-height: 100vh;
             min-height: 100dvh;
             position: relative;
-            padding: 60px 10px 20px 10px;
+            padding: 20px 10px;
             overflow-x: hidden;
         }
 
         .container {
-            --bear-peek-offset: 4.1rem;
             --bear-relative-width: 30%;
-            --bear-max-width: 8.1rem; /* Changed to rem */
+            --bear-max-width: 8.125rem;
 
             background-color: #fff5f5;
-            padding: 35px 30px;
+            padding: 4rem 30px 35px 30px; /* Added padding-top for bear */
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
@@ -67,7 +66,7 @@
             position: relative;
             animation: fadeInContainer 1s ease-in-out;
             z-index: 1;
-            margin-bottom: 15px;
+            margin: 0;
         }
 
         @keyframes fadeInContainer {
@@ -77,11 +76,11 @@
 
         .bear-decoration {
             position: absolute;
-            top: calc(-1.52 * var(--bear-peek-offset));
+            top: 0;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -90%); /* Adjusted Y translate */
             width: var(--bear-relative-width);
-            max-width: var(--bear-max-width); /* Uses rem value now */
+            max-width: var(--bear-max-width);
             height: auto;
             z-index: 2;
             pointer-events: none;
@@ -355,13 +354,9 @@
         }
 
         @media (max-width: 480px) {
-             body {
-                 padding-top: 50px;
-             }
             .container {
-                 --bear-peek-offset: 3.1rem;
-                 --bear-max-width: 6.25rem; /* Changed to rem */
-                padding: 30px 20px;
+                 --bear-max-width: 6.25rem;
+                 padding: 3.5rem 20px 30px 20px;
             }
             h1 {
                 font-size: 2.5em;
@@ -414,13 +409,9 @@
         }
 
         @media (max-height: 580px) {
-             .bunny-decoration { /* Hide only bunny */
+             .bunny-decoration {
                  display: none;
              }
-             .container {
-                 margin-bottom: 5px;
-             }
-             /* Bear remains visible */
         }
 
     </style>
