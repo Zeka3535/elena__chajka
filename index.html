@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Елена Чайка - Рукоделие</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Авторские интерьерные куклы, зайки и мишки Тедди ручной работы от Елены Чайки. Уникальные handmade-игрушки с душой.">
+    <meta name="keywords" content="интерьерные куклы, мишки Тедди, ручная работа, handmade, Елена Чайка, зайки, авторские игрушки">
+    <meta name="author" content="Елена Чайка">
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
+    <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
+    <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/Zajka.png?raw=true">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/">
+    <meta property="og:site_name" content="Елена Чайка — рукоделие">
+    <!-- Twitter Card (опционально) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
+    <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
+    <meta name="twitter:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/Zajka.png?raw=true">
+    <!-- /Meta Tags -->
+    
+    <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
@@ -277,14 +297,12 @@
             opacity: 1;
         }
 
-        /* Стили для QR-кода из файла */
-        .qr-modal img.qr-code-image { /* Добавлен класс для специфичности */
+        .qr-modal img.qr-code-image {
             display: block;
-            /* Задаем точный или максимальный размер как у генератора (например 300x300) */
             max-width: 300px;
             max-height: 300px;
-            width: auto; /* Позволяем уменьшаться при необходимости */
-            height: auto; /* Сохраняем пропорции */
+            width: auto;
+            height: auto;
             min-width: 150px;
             min-height: 150px;
             border-radius: 8px;
@@ -366,10 +384,9 @@
             .qr-modal .qr-container {
                  padding: 20px;
              }
-             /* Адаптация размера QR для маленьких экранов */
              .qr-modal img.qr-code-image {
-                 max-width: calc(100% - 10px); /* Занимает почти всю ширину контейнера */
-                 max-height: calc(90vh - 100px); /* Ограничиваем высоту */
+                 max-width: calc(100% - 10px);
+                 max-height: calc(90vh - 100px);
                  min-width: 120px;
                  min-height: 120px;
              }
@@ -392,9 +409,9 @@
 </head>
 <body>
     <div class="container">
-        <img src="Michka.png" alt="Декоративный мишка" class="bear-decoration">
+        <img src="Michka.png" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy">
 
-        <!-- <img src="avatar.jpg" alt="Елена Чайка" class="avatar"> -->
+        <!-- <img src="avatar.jpg" alt="Елена Чайка - мастер handmade игрушек" class="avatar" loading="lazy"> -->
 
         <h1>Елена Чайка</h1>
         <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
@@ -415,23 +432,20 @@
         <i class="fa-solid fa-qrcode"></i>
     </button>
 
-    <img src="Zajka.png" alt="Декоративный зайка" class="bunny-decoration" id="bunnyDecoration">
+    <img src="Zajka.png" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration">
 
     <div class="qr-modal" id="qrModal">
         <div class="qr-container">
             <span class="close" onclick="hideQR()" title="Закрыть">×</span>
-            <!-- Загружаем QR-код из файла -->
-            <img src="QR2.png" alt="QR-код ссылки на страницу" class="qr-code-image">
+            <img src="QR2.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy">
         </div>
     </div>
 
     <script>
-        // Удалена ссылка на qrCodeImage и функция generateQrCode
         const qrModal = document.getElementById('qrModal');
 
         function showQR() {
             if (qrModal) {
-                // Генерация QR больше не нужна
                 qrModal.classList.add('visible');
             }
         }
@@ -456,12 +470,11 @@
             }
         });
 
-        // Preload images (добавляем QR.png)
+        // Preload images
         ['Zajka.png', 'Michka.png', 'QR2.png'].forEach(src => {
             const img = new Image();
             img.src = src;
         });
-
     </script>
 </body>
 </html>
