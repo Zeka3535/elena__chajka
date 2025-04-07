@@ -53,9 +53,9 @@
         }
 
         .container {
-            --bear-peek-offset: 4.1rem; /* Changed to rem */
+            --bear-peek-offset: 4.1rem;
             --bear-relative-width: 30%;
-            --bear-max-width: 130px;
+            --bear-max-width: 8.1rem; /* Changed to rem */
 
             background-color: #fff5f5;
             padding: 35px 30px;
@@ -81,7 +81,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: var(--bear-relative-width);
-            max-width: var(--bear-max-width);
+            max-width: var(--bear-max-width); /* Uses rem value now */
             height: auto;
             z-index: 2;
             pointer-events: none;
@@ -359,8 +359,8 @@
                  padding-top: 50px;
              }
             .container {
-                 --bear-peek-offset: 3.1rem; /* Changed to rem */
-                 --bear-max-width: 100px;
+                 --bear-peek-offset: 3.1rem;
+                 --bear-max-width: 6.25rem; /* Changed to rem */
                 padding: 30px 20px;
             }
             h1 {
@@ -414,12 +414,13 @@
         }
 
         @media (max-height: 580px) {
-             .bunny-decoration {
+             .bunny-decoration { /* Hide only bunny */
                  display: none;
              }
              .container {
                  margin-bottom: 5px;
              }
+             /* Bear remains visible */
         }
 
     </style>
