@@ -13,19 +13,19 @@
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
+    <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true"> <!-- Убедитесь, что ogimage.png существует в репозитории -->
     <meta property="og:image:width" content="1000">
     <meta property="og:image:height" content="1000">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/">
+    <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/"> <!-- URL должен быть полным и правильным -->
     <meta property="og:site_name" content="Елена Чайка — рукоделие">
     <!-- Twitter Card (опционально) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta name="twitter:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
+    <meta name="twitter:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true"> <!-- Убедитесь, что ogimage.png существует в репозитории -->
     <!-- /Meta Tags -->
-    
+
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -76,10 +76,6 @@
         @keyframes fadeInContainer {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .container::before {
-            display: none;
         }
 
         .bear-decoration {
@@ -147,24 +143,32 @@
             font-weight: 400;
             background-color: #fefafa;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            align-items: center; /* Вертикальное выравнивание */
+            justify-content: center; /* Горизонтальное выравнивание контента (иконка + текст) */
+            gap: 10px; /* Промежуток между иконкой и текстом */
             -webkit-tap-highlight-color: transparent;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            /* text-align: left; - Обычно не требуется, flex сам управляет */
         }
 
         .link-button i {
-            font-size: 1.4em;
-            width: 25px;
-            display: inline-block;
-            text-align: center;
-            line-height: 1;
+            /* Убрана фиксированная ширина */
+            font-size: 1.4em; /* Базовый размер иконки */
+            line-height: 1; /* Важно для выравнивания самой иконки */
+            flex-shrink: 0; /* Не сжимать иконку */
         }
 
+        /* Небольшие коррекции размеров для визуальной гармонии (можно подстроить) */
         .link-button.phone i {
-             font-size: 1.2em;
+             font-size: 1.3em;
         }
+        .link-button.viber i {
+             font-size: 1.4em;
+        }
+        .link-button.instagram i {
+             font-size: 1.4em;
+        }
+
 
         .link-button:active {
              background-color: #ede2e2;
@@ -182,9 +186,19 @@
                 border-color: #e7c7cf;
                 color: #c58a99;
             }
+            .link-button.viber:hover {
+                border-color: #d8d4f5;
+                color: #6a5acd;
+            }
             .link-button.phone:hover {
                 border-color: #cdd8cd;
                 color: #a6b6a6;
+            }
+            .qr-modal .close:hover {
+                 background-color: #e8dada;
+                 transform: scale(1.1) rotate(90deg);
+                 box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+                 color: #8b5e5e;
             }
         }
 
@@ -342,13 +356,16 @@
              transition-duration: 0.1s;
         }
 
-        @media (hover: hover) {
-            .qr-modal .close:hover {
-                 background-color: #e8dada;
-                 transform: scale(1.1) rotate(90deg);
-                 box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-                 color: #8b5e5e;
-            }
+        /* Визуально скрытый заголовок для ARIA */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
         }
 
         @media (max-width: 480px) {
@@ -366,6 +383,7 @@
             .link-button {
                 padding: 12px 15px;
                 font-size: 1.05em;
+                gap: 8px; /* Уменьшаем gap на мобильных */
             }
              .description {
                  font-size: 1em;
@@ -414,6 +432,7 @@
     <div class="container">
         <img src="Michka.png" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy">
 
+        <!-- Раскомментируйте и укажите путь к фото, если оно есть -->
         <!-- <img src="avatar.jpg" alt="Елена Чайка - мастер handmade игрушек" class="avatar" loading="lazy"> -->
 
         <h1>Елена Чайка</h1>
@@ -423,6 +442,10 @@
             <a href="https://www.instagram.com/elena__chajka" target="_blank" rel="noopener noreferrer" class="link-button instagram">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
+            <!-- Ссылка на Viber -->
+            <a href="viber://chat?number=375297955001" target="_blank" rel="noopener noreferrer" class="link-button viber">
+                <i class="fa-brands fa-viber"></i> Viber
+            </a>
             <a href="tel:+375297955001" class="link-button phone">
                 <i class="fa-solid fa-phone"></i> Позвонить
             </a>
@@ -431,50 +454,84 @@
         <div class="slogan">Сделано с теплом и любовью ♥</div>
     </div>
 
-    <button class="qr-button" onclick="showQR()" title="Показать QR-код этой страницы">
+    <!-- Добавлен id и aria-haspopup -->
+    <button class="qr-button" onclick="showQR()" title="Показать QR-код этой страницы" aria-haspopup="dialog" id="qrButton">
         <i class="fa-solid fa-qrcode"></i>
     </button>
 
     <img src="Zajka.png" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration">
 
-    <div class="qr-modal" id="qrModal">
+    <!-- Добавлены ARIA атрибуты к модальному окну -->
+    <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
         <div class="qr-container">
-            <span class="close" onclick="hideQR()" title="Закрыть">×</span>
+            <!-- Добавлен id и aria-label к кнопке закрытия -->
+            <span class="close" onclick="hideQR()" title="Закрыть" aria-label="Закрыть" id="qrCloseButton" tabindex="0">×</span>
+             <!-- Добавлен визуально скрытый заголовок для aria-labelledby -->
+            <h2 id="qrModalTitle" class="visually-hidden">QR-код страницы</h2>
             <img src="QR2.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy">
         </div>
     </div>
 
     <script>
         const qrModal = document.getElementById('qrModal');
+        const qrButton = document.getElementById('qrButton'); // Кнопка, открывающая модальное окно
+        const qrCloseButton = document.getElementById('qrCloseButton'); // Кнопка закрытия в модальном окне
 
         function showQR() {
             if (qrModal) {
                 qrModal.classList.add('visible');
+                // Установить фокус на кнопку закрытия при открытии
+                qrCloseButton.focus();
             }
         }
 
         function hideQR() {
              if (qrModal) {
                 qrModal.classList.remove('visible');
-            }
+                // Вернуть фокус на кнопку, которая открыла модальное окно
+                if (qrButton) {
+                    qrButton.focus();
+                }
+             }
         }
 
         if (qrModal) {
+            // Закрытие по клику на фон или кнопку закрытия
             qrModal.addEventListener('click', function(event) {
-                if (event.target === qrModal || event.target.classList.contains('close')) {
+                if (event.target === qrModal || event.target === qrCloseButton || event.target.parentElement === qrCloseButton) {
                      hideQR();
+                }
+            });
+
+            // Добавляем возможность закрыть по нажатию Enter/Space на кнопке (если она span)
+            qrCloseButton.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault(); // Предотвратить стандартное действие (например, прокрутку при Space)
+                    hideQR();
                 }
             });
         }
 
+        // Закрытие по Esc и базовая ловушка фокуса
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && qrModal?.classList.contains('visible')) {
                  hideQR();
             }
+
+            // Простая ловушка фокуса внутри модального окна
+            if (event.key === 'Tab' && qrModal?.classList.contains('visible')) {
+                // В этом модальном окне только один фокусируемый элемент (кнопка закрытия)
+                // Поэтому просто предотвращаем Tab, чтобы фокус не ушел из окна
+                 if (document.activeElement === qrCloseButton) {
+                     // Если нажали Shift+Tab, тоже остаемся на кнопке
+                     // Если нажали Tab, остаемся на кнопке
+                     event.preventDefault();
+                 }
+            }
         });
 
-        // Preload images
-        ['Zajka.png', 'Michka.png', 'QR2.png'].forEach(src => {
+        // Предзагрузка изображений
+        ['Zajka.png', 'Michka.png', 'QR2.png', 'ogimage.png'].forEach(src => { // Добавил ogimage.png на всякий случай
             const img = new Image();
             img.src = src;
         });
