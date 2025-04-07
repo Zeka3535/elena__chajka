@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zeka3535.github.io/elena__chajka/sitemap.xml
