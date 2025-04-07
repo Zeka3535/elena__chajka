@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
     <link rel="icon" href="favicon.svg" type="image/svg">
     <link rel="apple-touch-icon" href="favicon.svg">
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Авторские интерьерные куклы, зайки и мишки Тедди ручной работы от Елены Чайки. Уникальные handmade-игрушки с душой.">
     <meta name="keywords" content="интерьерные куклы, мишки Тедди, ручная работа, handmade, Елена Чайка, зайки, авторские игрушки">
     <meta name="author" content="Елена Чайка">
-    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true"> <!-- Убедитесь, что ogimage.png существует в репозитории -->
+    <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
     <meta property="og:image:width" content="1000">
     <meta property="og:image:height" content="1000">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/"> <!-- URL должен быть полным и правильным -->
+    <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/">
     <meta property="og:site_name" content="Елена Чайка — рукоделие">
-    <!-- Twitter Card (опционально) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta name="twitter:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true"> <!-- Убедитесь, что ogimage.png существует в репозитории -->
-    <!-- /Meta Tags -->
+    <meta name="twitter:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
 
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
@@ -51,6 +46,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            min-height: 100dvh;
             position: relative;
             padding: 60px 10px 20px 10px;
             overflow-x: hidden;
@@ -71,6 +67,7 @@
             position: relative;
             animation: fadeInContainer 1s ease-in-out;
             z-index: 1;
+            margin-bottom: 15px;
         }
 
         @keyframes fadeInContainer {
@@ -143,32 +140,22 @@
             font-weight: 400;
             background-color: #fefafa;
             display: flex;
-            align-items: center; /* Вертикальное выравнивание */
-            justify-content: center; /* Горизонтальное выравнивание контента (иконка + текст) */
-            gap: 10px; /* Промежуток между иконкой и текстом */
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             -webkit-tap-highlight-color: transparent;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            /* text-align: left; - Обычно не требуется, flex сам управляет */
         }
 
         .link-button i {
-            /* Убрана фиксированная ширина */
-            font-size: 1.4em; /* Базовый размер иконки */
-            line-height: 1; /* Важно для выравнивания самой иконки */
-            flex-shrink: 0; /* Не сжимать иконку */
+            font-size: 1.4em;
+            line-height: 1;
+            flex-shrink: 0;
         }
 
-        /* Небольшие коррекции размеров для визуальной гармонии (можно подстроить) */
-        .link-button.phone i {
-             font-size: 1.3em;
-        }
-        .link-button.viber i {
-             font-size: 1.4em;
-        }
-        .link-button.instagram i {
-             font-size: 1.4em;
-        }
-
+        .link-button.phone i { font-size: 1.3em; }
+        .link-button.viber i { font-size: 1.4em; }
+        .link-button.instagram i { font-size: 1.4em; }
 
         .link-button:active {
              background-color: #ede2e2;
@@ -356,7 +343,6 @@
              transition-duration: 0.1s;
         }
 
-        /* Визуально скрытый заголовок для ARIA */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -383,7 +369,7 @@
             .link-button {
                 padding: 12px 15px;
                 font-size: 1.05em;
-                gap: 8px; /* Уменьшаем gap на мобильных */
+                gap: 8px;
             }
              .description {
                  font-size: 1em;
@@ -426,14 +412,21 @@
                  right: -15px;
              }
         }
+
+        @media (max-height: 580px) {
+             .bunny-decoration {
+                 display: none;
+             }
+             .container {
+                 margin-bottom: 5px;
+             }
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <img src="Michka.png" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy">
-
-        <!-- Раскомментируйте и укажите путь к фото, если оно есть -->
-        <!-- <img src="avatar.jpg" alt="Елена Чайка - мастер handmade игрушек" class="avatar" loading="lazy"> -->
 
         <h1>Елена Чайка</h1>
         <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
@@ -442,7 +435,6 @@
             <a href="https://www.instagram.com/elena__chajka" target="_blank" rel="noopener noreferrer" class="link-button instagram">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
-            <!-- Ссылка на Viber -->
             <a href="viber://chat?number=375297955001" target="_blank" rel="noopener noreferrer" class="link-button viber">
                 <i class="fa-brands fa-viber"></i> Viber
             </a>
@@ -454,19 +446,15 @@
         <div class="slogan">Сделано с теплом и любовью ♥</div>
     </div>
 
-    <!-- Добавлен id и aria-haspopup -->
     <button class="qr-button" onclick="showQR()" title="Показать QR-код этой страницы" aria-haspopup="dialog" id="qrButton">
         <i class="fa-solid fa-qrcode"></i>
     </button>
 
     <img src="Zajka.png" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration">
 
-    <!-- Добавлены ARIA атрибуты к модальному окну -->
     <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
         <div class="qr-container">
-            <!-- Добавлен id и aria-label к кнопке закрытия -->
             <span class="close" onclick="hideQR()" title="Закрыть" aria-label="Закрыть" id="qrCloseButton" tabindex="0">×</span>
-             <!-- Добавлен визуально скрытый заголовок для aria-labelledby -->
             <h2 id="qrModalTitle" class="visually-hidden">QR-код страницы</h2>
             <img src="QR2.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy">
         </div>
@@ -474,13 +462,12 @@
 
     <script>
         const qrModal = document.getElementById('qrModal');
-        const qrButton = document.getElementById('qrButton'); // Кнопка, открывающая модальное окно
-        const qrCloseButton = document.getElementById('qrCloseButton'); // Кнопка закрытия в модальном окне
+        const qrButton = document.getElementById('qrButton');
+        const qrCloseButton = document.getElementById('qrCloseButton');
 
         function showQR() {
             if (qrModal) {
                 qrModal.classList.add('visible');
-                // Установить фокус на кнопку закрытия при открытии
                 qrCloseButton.focus();
             }
         }
@@ -488,7 +475,6 @@
         function hideQR() {
              if (qrModal) {
                 qrModal.classList.remove('visible');
-                // Вернуть фокус на кнопку, которая открыла модальное окно
                 if (qrButton) {
                     qrButton.focus();
                 }
@@ -496,42 +482,31 @@
         }
 
         if (qrModal) {
-            // Закрытие по клику на фон или кнопку закрытия
             qrModal.addEventListener('click', function(event) {
                 if (event.target === qrModal || event.target === qrCloseButton || event.target.parentElement === qrCloseButton) {
                      hideQR();
                 }
             });
-
-            // Добавляем возможность закрыть по нажатию Enter/Space на кнопке (если она span)
             qrCloseButton.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault(); // Предотвратить стандартное действие (например, прокрутку при Space)
+                    event.preventDefault();
                     hideQR();
                 }
             });
         }
 
-        // Закрытие по Esc и базовая ловушка фокуса
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && qrModal?.classList.contains('visible')) {
                  hideQR();
             }
-
-            // Простая ловушка фокуса внутри модального окна
             if (event.key === 'Tab' && qrModal?.classList.contains('visible')) {
-                // В этом модальном окне только один фокусируемый элемент (кнопка закрытия)
-                // Поэтому просто предотвращаем Tab, чтобы фокус не ушел из окна
                  if (document.activeElement === qrCloseButton) {
-                     // Если нажали Shift+Tab, тоже остаемся на кнопке
-                     // Если нажали Tab, остаемся на кнопке
                      event.preventDefault();
                  }
             }
         });
 
-        // Предзагрузка изображений
-        ['Zajka.png', 'Michka.png', 'QR2.png', 'ogimage.png'].forEach(src => { // Добавил ogimage.png на всякий случай
+        ['Zajka.png', 'Michka.png', 'QR2.png', 'ogimage.png'].forEach(src => {
             const img = new Image();
             img.src = src;
         });
