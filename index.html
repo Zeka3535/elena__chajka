@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Иконки сайта -->
     <link rel="icon" href="favicon.svg" type="image/svg">
     <link rel="apple-touch-icon" href="favicon.svg">
+
+    <!-- Основные мета-теги для SEO и соцсетей -->
     <meta name="description" content="Авторские интерьерные куклы, зайки и мишки Тедди ручной работы от Елены Чайки. Уникальные handmade-игрушки с душой.">
     <meta name="keywords" content="интерьерные куклы, мишки Тедди, ручная работа, handmade, Елена Чайка, зайки, авторские игрушки">
     <meta name="author" content="Елена Чайка">
+    <!-- Open Graph -->
     <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
     <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
@@ -16,6 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/">
     <meta property="og:site_name" content="Елена Чайка — рукоделие">
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
@@ -23,10 +29,12 @@
 
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
+    <!-- Подключение иконок и шрифтов -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
+        /* --- Базовые стили и сброс --- */
         html {
             box-sizing: border-box;
             height: 100%;
@@ -46,24 +54,25 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            min-height: 100dvh;
+            min-height: 100dvh; /* Динамическая высота для мобильных */
             position: relative;
             padding: 20px 10px;
             overflow-x: hidden;
         }
 
+        /* --- Основной контейнер (карточка) --- */
         .container {
             --bear-relative-width: 30%;
-            --bear-max-width: 8.125rem;
+            --bear-max-width: 8.125rem; /* Макс. ширина мишки в rem */
 
             background-color: #fff5f5;
-            padding: 4rem 30px 35px 30px; /* Added padding-top for bear */
+            padding: 4rem 30px 35px 30px; /* Отступ сверху для мишки */
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
             max-width: 450px;
             width: 100%;
-            position: relative;
+            position: relative; /* Для позиционирования мишки */
             animation: fadeInContainer 1s ease-in-out;
             z-index: 1;
             margin: 0;
@@ -74,11 +83,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- Декоративный мишка --- */
         .bear-decoration {
             position: absolute;
-            top: 0;
+            top: 0; /* Позиционируем от верха контейнера */
             left: 50%;
-            transform: translate(-50%, -90%); /* Adjusted Y translate */
+            /* Центрируем и сдвигаем вверх на % от своей высоты */
+            transform: translate(-50%, -90%);
             width: var(--bear-relative-width);
             max-width: var(--bear-max-width);
             height: auto;
@@ -86,6 +97,7 @@
             pointer-events: none;
         }
 
+        /* --- Аватар (если используется) --- */
         .avatar {
             width: 120px;
             height: 120px;
@@ -97,6 +109,7 @@
             z-index: 3;
         }
 
+        /* --- Текстовые элементы --- */
         h1 {
             font-family: 'Amatic SC', cursive;
             font-size: 3em;
@@ -122,6 +135,7 @@
             line-height: 1.2;
         }
 
+        /* --- Блок ссылок --- */
         .links {
             display: flex;
             flex-direction: column;
@@ -149,20 +163,21 @@
         .link-button i {
             font-size: 1.4em;
             line-height: 1;
-            flex-shrink: 0;
+            flex-shrink: 0; /* Запрещаем иконке сжиматься */
         }
 
         .link-button.phone i { font-size: 1.3em; }
         .link-button.viber i { font-size: 1.4em; }
         .link-button.instagram i { font-size: 1.4em; }
 
+        /* --- Состояния кнопок --- */
         .link-button:active {
              background-color: #ede2e2;
              transform: scale(1.01);
              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
          }
 
-        @media (hover: hover) {
+        @media (hover: hover) { /* Стили при наведении только для устройств с мышью */
             .link-button:hover {
                 background-color: #f2e4e4;
                 transform: scale(1.03);
@@ -188,19 +203,7 @@
             }
         }
 
-        @keyframes pulseQrButton {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 3px 10px rgba(95, 75, 75, 0.08);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 6px 15px rgba(95, 75, 75, 0.15);
-                opacity: 1;
-            }
-        }
-
+        /* --- Кнопка QR-кода --- */
         .qr-button {
             position: fixed;
             bottom: 25px;
@@ -241,6 +244,20 @@
             background-color: #f9ecec;
         }
 
+        @keyframes pulseQrButton {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 3px 10px rgba(95, 75, 75, 0.08);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 15px rgba(95, 75, 75, 0.15);
+                opacity: 1;
+            }
+        }
+
+        /* --- Декоративный зайка --- */
         .bunny-decoration {
             position: fixed;
             bottom: 5px;
@@ -253,6 +270,7 @@
             transform: rotate(-5deg);
         }
 
+        /* --- Модальное окно QR-кода --- */
         .qr-modal {
             display: flex;
             visibility: hidden;
@@ -342,6 +360,7 @@
              transition-duration: 0.1s;
         }
 
+        /* --- Вспомогательный класс для скрытия элементов доступно --- */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -353,7 +372,8 @@
             border: 0;
         }
 
-        @media (max-width: 480px) {
+        /* --- Медиа-запросы для адаптивности --- */
+        @media (max-width: 480px) { /* Стили для маленьких экранов по ширине */
             .container {
                  --bear-max-width: 6.25rem;
                  padding: 3.5rem 20px 30px 20px;
@@ -408,9 +428,9 @@
              }
         }
 
-        @media (max-height: 580px) {
+        @media (max-height: 580px) { /* Стили для экранов с маленькой высотой */
              .bunny-decoration {
-                 display: none;
+                 display: none; /* Скрываем зайку, чтобы не мешал QR-кнопке */
              }
         }
 
@@ -448,11 +468,12 @@
         <div class="qr-container">
             <span class="close" onclick="hideQR()" title="Закрыть" aria-label="Закрыть" id="qrCloseButton" tabindex="0">×</span>
             <h2 id="qrModalTitle" class="visually-hidden">QR-код страницы</h2>
-            <img src="QR2.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy">
+            <img src="QR.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy">
         </div>
     </div>
 
     <script>
+        // --- Логика модального окна QR-кода ---
         const qrModal = document.getElementById('qrModal');
         const qrButton = document.getElementById('qrButton');
         const qrCloseButton = document.getElementById('qrCloseButton');
@@ -460,7 +481,7 @@
         function showQR() {
             if (qrModal) {
                 qrModal.classList.add('visible');
-                qrCloseButton.focus();
+                qrCloseButton.focus(); // Устанавливаем фокус на кнопку закрытия
             }
         }
 
@@ -468,17 +489,20 @@
              if (qrModal) {
                 qrModal.classList.remove('visible');
                 if (qrButton) {
-                    qrButton.focus();
+                    qrButton.focus(); // Возвращаем фокус на кнопку QR
                 }
              }
         }
 
+        // Обработчики закрытия модального окна
         if (qrModal) {
+            // Клик на фон или кнопку закрытия
             qrModal.addEventListener('click', function(event) {
                 if (event.target === qrModal || event.target === qrCloseButton || event.target.parentElement === qrCloseButton) {
                      hideQR();
                 }
             });
+            // Нажатие Enter/Space на кнопке закрытия
             qrCloseButton.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
@@ -487,10 +511,13 @@
             });
         }
 
+        // Глобальный обработчик для Escape и ловушки фокуса
         document.addEventListener('keydown', function(event) {
+            // Закрытие по Escape
             if (event.key === 'Escape' && qrModal?.classList.contains('visible')) {
                  hideQR();
             }
+            // Простая ловушка фокуса (не дает уйти с кнопки закрытия)
             if (event.key === 'Tab' && qrModal?.classList.contains('visible')) {
                  if (document.activeElement === qrCloseButton) {
                      event.preventDefault();
@@ -498,7 +525,8 @@
             }
         });
 
-        ['Zajka.png', 'Michka.png', 'QR2.png', 'ogimage.png'].forEach(src => {
+        // --- Предзагрузка изображений ---
+        ['Zajka.png', 'Michka.png', 'QR.png', 'ogimage.png'].forEach(src => {
             const img = new Image();
             img.src = src;
         });
