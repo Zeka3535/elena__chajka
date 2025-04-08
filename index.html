@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Иконки сайта -->
+    <!-- Пути к фавиконкам остаются относительными от корня, т.к. файлы в корне -->
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="shortcut icon" href="favicon.ico" />
@@ -19,8 +20,8 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <!-- Исправлен путь к OG изображению на корректный URL GitHub Pages -->
-    <meta property="og:image" content="https://zeka3535.github.io/elena__chajka/ogimage.png">
+    <!-- Обновлен путь к OG изображению (теперь в папке images) -->
+    <meta property="og:image" content="https://zeka3535.github.io/elena__chajka/images/ogimage.png">
     <meta property="og:image:width" content="1000">
     <meta property="og:image:height" content="1000">
     <meta property="og:type" content="website">
@@ -30,7 +31,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta name="twitter:image" content="https://zeka3535.github.io/elena__chajka/ogimage.png">
+    <!-- Обновлен путь к Twitter изображению (теперь в папке images) -->
+    <meta name="twitter:image" content="https://zeka3535.github.io/elena__chajka/images/ogimage.png">
 
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
@@ -457,7 +459,8 @@
 </head>
 <body>
     <div class="container">
-        <img src="Michka.webp" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy" width="130" height="117">
+        <!-- Обновлен путь src (добавлена папка images) -->
+        <img src="images/Michka.webp" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy" width="130" height="117">
 
         <h1>Елена Чайка</h1>
         <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
@@ -482,13 +485,15 @@
         <span class="visually-hidden">Показать QR-код</span>
     </button>
 
-    <img src="Zajka.webp" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration" width="110" height="163">
+    <!-- Обновлен путь src (добавлена папка images) -->
+    <img src="images/Zajka.webp" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration" width="110" height="163">
 
     <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" hidden>
         <div class="qr-container">
             <button type="button" class="close" title="Закрыть" aria-label="Закрыть" id="qrCloseButton">×</button>
             <h2 id="qrModalTitle" class="visually-hidden">QR-код страницы</h2>
-            <img src="QR.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy" width="300" height="300">
+            <!-- Обновлен путь src (добавлена папка images) -->
+            <img src="images/QR.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy" width="300" height="300">
         </div>
     </div>
 
@@ -583,6 +588,7 @@
 
 
         // --- Image Preloading ---
+        // Обновлены пути для предзагрузки изображений
         function preloadImages(urls) {
             urls.forEach(src => {
                 const img = new Image();
@@ -590,10 +596,11 @@
             });
         }
         preloadImages([
-            'Zajka.webp',
-            'Michka.webp',
-            'QR.png',
-            'https://zeka3535.github.io/elena__chajka/ogimage.png'
+            'images/Zajka.webp', // Обновлен путь
+            'images/Michka.webp', // Обновлен путь
+            'images/QR.png', // Обновлен путь
+            // Используем обновленный URL для предзагрузки OG изображения
+            'https://zeka3535.github.io/elena__chajka/images/ogimage.png' // Обновлен путь
         ]);
 
     </script>
