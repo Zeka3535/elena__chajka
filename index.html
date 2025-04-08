@@ -10,33 +10,33 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Визитка - Елена Чайка" />
-    <meta name="theme-color" content="#fde7e9">
     <link rel="manifest" href="site.webmanifest" />
+    <!-- Цвет темы для PWA и браузера -->
+    <meta name="theme-color" content="#fde7e9">
+
 
     <!-- Основные мета-теги для SEO и соцсетей -->
     <meta name="description" content="Авторские интерьерные куклы, зайки и мишки Тедди ручной работы от Елены Чайки. Уникальные handmade-игрушки с душой.">
     <meta name="keywords" content="интерьерные куклы, мишки Тедди, ручная работа, handmade, Елена Чайка, зайки, авторские игрушки">
     <meta name="author" content="Елена Чайка">
-    <!-- Open Graph -->
+    <!-- Open Graph (для соцсетей типа Facebook, VK) -->
     <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <!-- Обновлен путь к OG изображению (теперь в папке images) -->
     <meta property="og:image" content="https://zeka3535.github.io/elena__chajka/images/ogimage.png">
     <meta property="og:image:width" content="1000">
     <meta property="og:image:height" content="1000">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zeka3535.github.io/elena__chajka/">
     <meta property="og:site_name" content="Елена Чайка — рукоделие">
-    <!-- Twitter Card -->
+    <!-- Twitter Card (для Twitter) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <!-- Обновлен путь к Twitter изображению (теперь в папке images) -->
     <meta name="twitter:image" content="https://zeka3535.github.io/elena__chajka/images/ogimage.png">
 
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
-    <!-- Подключение иконок и шрифтов -->
+    <!-- Подключение иконок (Font Awesome) и шрифтов (Google Fonts) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
@@ -50,7 +50,6 @@
         *, *:before, *:after {
             box-sizing: inherit;
         }
-
         body {
             font-family: 'Roboto', sans-serif;
             font-weight: 300;
@@ -68,13 +67,12 @@
             overflow-x: hidden;
         }
 
-        /* --- Основной контейнер (карточка) --- */
+        /* --- Основной контейнер (карточка визитки) --- */
         .container {
             --bear-relative-width: 30%;
-            --bear-max-width: 8.125rem; /* 130px */
-
+            --bear-max-width: 8.125rem;
             background-color: #fff5f5;
-            padding: 4rem 30px 35px 30px; /* ~64px top padding */
+            padding: 4rem 30px 35px 30px;
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
@@ -85,13 +83,12 @@
             z-index: 1;
             margin: 0;
         }
-
         @keyframes fadeInContainer {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Декоративный мишка --- */
+        /* --- Декоративный мишка над карточкой --- */
         .bear-decoration {
             position: absolute;
             top: 0;
@@ -104,19 +101,7 @@
             pointer-events: none;
         }
 
-        /* --- Аватар (если используется - currently not used in HTML) --- */
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid #f2e4e4;
-            position: relative;
-            z-index: 3;
-        }
-
-        /* --- Текстовые элементы --- */
+        /* --- Текстовые элементы в карточке --- */
         h1 {
             font-family: 'Amatic SC', cursive;
             font-size: 3em;
@@ -125,14 +110,12 @@
             margin: 0 0 10px;
             line-height: 1.1;
         }
-
         .description {
             font-size: 1.1em;
             color: #7a6a6a;
             margin-bottom: 30px;
             line-height: 1.5;
         }
-
         .slogan {
             font-family: 'Amatic SC', cursive;
             font-size: 1.6em;
@@ -142,14 +125,13 @@
             line-height: 1.2;
         }
 
-        /* --- Блок ссылок --- */
+        /* --- Блок ссылок (Instagram, Viber, Телефон) --- */
         .links {
             display: flex;
             flex-direction: column;
             gap: 15px;
             margin-bottom: 30px;
         }
-
         .link-button {
             padding: 15px 20px;
             border: 2px solid #f2e4e4;
@@ -166,7 +148,6 @@
             -webkit-tap-highlight-color: transparent;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
-
         .link-button i {
             font-size: 1.4em;
             line-height: 1;
@@ -174,11 +155,9 @@
             width: 1.4em;
             text-align: center;
         }
-
         .link-button.phone i { font-size: 1.3em; }
 
-
-        /* --- Состояния кнопок --- */
+        /* --- Состояния кнопок (нажатие, наведение) --- */
         .link-button:active,
         .qr-button:active {
              transform: scale(1.01);
@@ -186,49 +165,20 @@
              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
              transition-duration: 0.1s;
         }
-        .link-button:active {
-            background-color: #ede2e2;
-        }
-         .qr-button:active {
-            transform: scale(1.05);
-            opacity: 0.9;
-            background-color: #f9ecec;
+        .link-button:active { background-color: #ede2e2; }
+        .qr-button:active { transform: scale(1.05); opacity: 0.9; background-color: #f9ecec; }
+
+        @media (hover: hover) { /* Стили при наведении только для устройств с мышью */
+            .link-button:hover { background-color: #f2e4e4; transform: scale(1.03); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+            .link-button.instagram:hover { border-color: #e7c7cf; color: #c58a99; }
+            .link-button.viber:hover { border-color: #d8d4f5; color: #6a5acd; }
+            .link-button.phone:hover { border-color: #cdd8cd; color: #788a78; }
+            .qr-button:hover { animation-play-state: paused; opacity: 1; transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.1); background-color: #fff5f5; }
+            .qr-modal .close:hover { background-color: #e8dada; transform: scale(1.1) rotate(90deg); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2); color: #8b5e5e; }
+            .share-button:hover { background-color: #e8dada; transform: scale(1.1); box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2); color: #8b5e5e; }
         }
 
-        @media (hover: hover) {
-            .link-button:hover {
-                background-color: #f2e4e4;
-                transform: scale(1.03);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            }
-            .link-button.instagram:hover {
-                border-color: #e7c7cf;
-                color: #c58a99;
-            }
-            .link-button.viber:hover {
-                border-color: #d8d4f5;
-                color: #6a5acd;
-            }
-            .link-button.phone:hover {
-                border-color: #cdd8cd;
-                color: #788a78;
-            }
-             .qr-button:hover {
-                 animation-play-state: paused;
-                 opacity: 1;
-                 transform: scale(1.1);
-                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                 background-color: #fff5f5;
-             }
-            .qr-modal .close:hover {
-                 background-color: #e8dada;
-                 transform: scale(1.1) rotate(90deg);
-                 box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-                 color: #8b5e5e;
-            }
-        }
-
-        /* --- Кнопка QR-кода --- */
+        /* --- Кнопка вызова QR-модального окна --- */
         .qr-button {
             position: fixed;
             bottom: 25px;
@@ -254,28 +204,13 @@
             opacity: 0.8;
             transform: scale(1);
         }
-
-        .qr-button:focus-visible {
-             outline: 2px solid #a66f6f;
-             outline-offset: 2px;
-             opacity: 1;
-             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-         }
-
+        .qr-button:focus-visible { outline: 2px solid #a66f6f; outline-offset: 2px; opacity: 1; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         @keyframes pulseQrButton {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 3px 10px rgba(95, 75, 75, 0.08);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 6px 15px rgba(95, 75, 75, 0.15);
-                opacity: 1;
-            }
+            0%, 100% { transform: scale(1); box-shadow: 0 3px 10px rgba(95, 75, 75, 0.08); opacity: 0.8; }
+            50% { transform: scale(1.1); box-shadow: 0 6px 15px rgba(95, 75, 75, 0.15); opacity: 1; }
         }
 
-        /* --- Декоративный зайка --- */
+        /* --- Декоративный зайка в углу --- */
         .bunny-decoration {
             position: fixed;
             bottom: 5px;
@@ -290,7 +225,7 @@
 
         /* --- Модальное окно QR-кода --- */
         .qr-modal {
-            display: none;
+            display: none; /* Управляется JS */
             visibility: hidden;
             opacity: 0;
             position: fixed;
@@ -300,66 +235,53 @@
             height: 100%;
             background-color: rgba(95, 75, 75, 0.6);
             backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 20px;
             transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
         }
+        .qr-modal.visible { visibility: visible; opacity: 1; transition: opacity 0.3s ease-in-out, visibility 0s linear 0s; }
 
-        .qr-modal.visible {
-             display: flex;
-             visibility: visible;
-             opacity: 1;
-             transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
-        }
-
+        /* --- Контейнер для QR-кода внутри модального окна --- */
         .qr-modal .qr-container {
             background-color: #fff5f5;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             position: relative;
+            display: inline-block; /* Обтекает содержимое */
             max-width: 90%;
-            max-height: 90%;
-            width: auto;
-            height: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             transform: scale(0.95);
             opacity: 0;
             transition: transform 0.3s ease-out 0.1s, opacity 0.3s ease-out 0.1s;
         }
+        .qr-modal.visible .qr-container { transform: scale(1); opacity: 1; }
 
-         .qr-modal.visible .qr-container {
-            transform: scale(1);
-            opacity: 1;
-        }
-
+        /* --- Изображение QR-кода --- */
         .qr-modal img.qr-code-image {
             display: block;
-            max-width: 300px;
-            max-height: 300px;
-            width: auto;
+            width: 100%; /* Масштабируется под контейнер */
+            max-width: 300px; /* Максимальный размер */
             height: auto;
-            min-width: 150px;
-            min-height: 150px;
+            min-width: 100px;
             border-radius: 8px;
-            border: 5px solid #fff5f5;
         }
 
+        /* --- Кнопка закрытия модального окна --- */
         .qr-modal .close {
             position: absolute;
-            top: -18px;
-            right: -18px;
-            width: 40px;
-            height: 40px;
+            top: -15px;
+            right: -15px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background-color: #f2e4e4;
             color: #a66f6f;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-            font-size: 1.8em;
+            font-size: 1.6em;
             font-weight: bold;
             display: flex;
             align-items: center;
@@ -370,96 +292,66 @@
             transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
             padding: 0;
             border: 2px solid #fff5f5;
+            z-index: 1002;
         }
+        .qr-modal .close:focus-visible { outline: 2px solid #a66f6f; outline-offset: 2px; }
 
-         .qr-modal .close:focus-visible {
-             outline: 2px solid #a66f6f;
-             outline-offset: 2px;
-         }
+        /* --- Кнопка "Поделиться" под QR-кодом --- */
+        .share-button {
+            margin-top: 30px;
+            width: 45px;
+            height: 45px;
+            padding: 0;
+            border: 2px solid #f2e4e4;
+            border-radius: 50%;
+            background-color: #fff5f5;
+            color: #a66f6f;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.5em;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            flex-shrink: 0; /* Запрещаем сжатие */
+        }
+        .share-button i { line-height: 1; display: block; }
+        .share-button:active { transform: scale(1.05); filter: brightness(0.95); transition-duration: 0.1s; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
+        .share-button:focus-visible { outline: 2px solid #a66f6f; outline-offset: 2px; }
 
-        /* --- Вспомогательный класс для скрытия элементов --- */
+        /* --- Вспомогательный класс для скрытия элементов (для доступности) --- */
         .visually-hidden {
-            position: absolute !important;
-            width: 1px !important;
-            height: 1px !important;
-            margin: -1px !important;
-            padding: 0 !important;
-            overflow: hidden !important;
-            clip: rect(0, 0, 0, 0) !important;
-            border: 0 !important;
-            white-space: nowrap !important;
+            position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; border: 0 !important; white-space: nowrap !important;
         }
 
         /* --- Медиа-запросы для адаптивности --- */
-        @media (max-width: 480px) {
-            body {
-                padding: 15px 10px;
-            }
-            .container {
-                 --bear-max-width: 6.25rem; /* ~100px */
-                 padding: 3.5rem 20px 30px 20px;
-            }
-            h1 {
-                font-size: clamp(2.8em, 10vw, 3.5em);
-            }
-            .link-button {
-                padding: 12px 15px;
-                font-size: 1.05em;
-                gap: 8px;
-            }
-             .description {
-                 font-size: 1em;
-                 margin-bottom: 25px;
-             }
-            .links {
-                 gap: 12px;
-                 margin-bottom: 25px;
-            }
-            .slogan {
-                 font-size: 1.4em;
-                 margin-top: 10px;
-            }
-            .bunny-decoration {
-                 width: 90px;
-                 bottom: 3px;
-                 left: 3px;
-            }
-            .qr-modal .qr-container {
-                 padding: 20px;
-             }
-             .qr-modal img.qr-code-image {
-                 max-width: calc(100vw - 80px);
-                 max-height: calc(100dvh - 120px);
-                 min-width: 120px;
-                 min-height: 120px;
-             }
-            .qr-button {
-                width: 45px;
-                height: 45px;
-                font-size: 1.6em;
-                bottom: 15px;
-                right: 15px;
-            }
-             .qr-modal .close {
-                 width: 36px;
-                 height: 36px;
-                 font-size: 1.6em;
-                 top: -15px;
-                 right: -15px;
-             }
+        @media (max-width: 480px) { /* Маленькие экраны */
+            body { padding: 15px 10px; }
+            .container { --bear-max-width: 6.25rem; padding: 3.5rem 20px 30px 20px; }
+            h1 { font-size: clamp(2.8em, 10vw, 3.5em); }
+            .link-button { padding: 12px 15px; font-size: 1.05em; gap: 8px; }
+            .description { font-size: 1em; margin-bottom: 25px; }
+            .links { gap: 12px; margin-bottom: 25px; }
+            .slogan { font-size: 1.4em; margin-top: 10px; }
+            .bunny-decoration { width: 90px; bottom: 3px; left: 3px; }
+            .qr-modal .qr-container { padding: 20px; }
+            .qr-modal img.qr-code-image { min-width: 80px; }
+            .qr-button { width: 45px; height: 45px; font-size: 1.6em; bottom: 15px; right: 15px; }
+            .qr-modal .close { width: 32px; height: 32px; font-size: 1.5em; top: -12px; right: -12px; }
+            .share-button { width: 40px; height: 40px; font-size: 1.4em; margin-top: 20px; }
         }
-
-        @media (max-height: 580px) and (max-width: 750px) {
-             .bunny-decoration {
-                 display: none;
-             }
+        @media (max-height: 500px) { /* Низкие экраны */
+             .bunny-decoration { display: none; }
+             .share-button { margin-top: 15px; }
+             .qr-modal .qr-container { padding: 15px; }
+             .qr-modal .close { top: -10px; right: -10px; }
         }
-
     </style>
 </head>
 <body>
+    <!-- Основной контейнер-визитка -->
     <div class="container">
-        <!-- Обновлен путь src (добавлена папка images) -->
         <img src="images/Michka.webp" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy" width="130" height="117">
 
         <h1>Елена Чайка</h1>
@@ -480,129 +372,131 @@
         <div class="slogan">Сделано с теплом и любовью <span role="img" aria-label="сердце">♥</span></div>
     </div>
 
+    <!-- Кнопка вызова QR -->
     <button type="button" class="qr-button" title="Показать QR-код этой страницы" aria-haspopup="dialog" aria-expanded="false" id="qrButton" aria-controls="qrModal">
         <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
         <span class="visually-hidden">Показать QR-код</span>
     </button>
 
-    <!-- Обновлен путь src (добавлена папка images) -->
+    <!-- Декоративный зайка -->
     <img src="images/Zajka.webp" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration" width="110" height="163">
 
+    <!-- Модальное окно QR -->
     <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" hidden>
+        <!-- Контейнер QR и кнопки закрытия -->
         <div class="qr-container">
             <button type="button" class="close" title="Закрыть" aria-label="Закрыть" id="qrCloseButton">×</button>
-            <h2 id="qrModalTitle" class="visually-hidden">QR-код страницы</h2>
-            <!-- Обновлен путь src (добавлена папка images) -->
+            <h2 id="qrModalTitle" class="visually-hidden">QR-код и опции</h2>
             <img src="images/QR.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy" width="300" height="300">
         </div>
+        <!-- Кнопка Поделиться -->
+        <button type="button" class="share-button" id="shareButton" title="Поделиться" aria-label="Поделиться ссылкой" hidden>
+            <i class="fa-solid fa-share-alt" aria-hidden="true"></i>
+        </button>
     </div>
 
     <script>
-        // --- DOM Element References ---
+        // --- Ссылки на DOM-элементы ---
         const qrModal = document.getElementById('qrModal');
         const qrButton = document.getElementById('qrButton');
         const qrCloseButton = document.getElementById('qrCloseButton');
-        const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        const shareButton = document.getElementById('shareButton');
+        const focusableElementsString = '#qrModal button, #qrModal [href], #qrModal input, #qrModal select, #qrModal textarea, #qrModal [tabindex]:not([tabindex="-1"])';
 
-        // --- State ---
-        let previouslyFocusedElement;
+        // --- Состояние ---
+        let previouslyFocusedElement; // Для возврата фокуса после закрытия модалки
 
-        // --- Functions ---
+        // --- Функции управления модальным окном ---
         function showQR() {
             if (!qrModal || !qrButton) return;
-
             previouslyFocusedElement = document.activeElement;
-
             qrModal.hidden = false;
             qrModal.classList.add('visible');
             qrButton.setAttribute('aria-expanded', 'true');
-
-            setTimeout(() => {
-                qrCloseButton?.focus();
-            }, 100);
-
-             document.addEventListener('keydown', handleModalKeydown);
+            // Показываем кнопку Поделиться, если API доступен
+            if (shareButton && navigator.share) { shareButton.hidden = false; }
+            else if (shareButton) { shareButton.hidden = true; }
+            // Устанавливаем фокус на кнопку закрытия
+            setTimeout(() => { qrCloseButton?.focus(); }, 100);
+            document.addEventListener('keydown', handleModalKeydown);
         }
 
         function hideQR() {
              if (!qrModal || !qrButton) return;
-
             qrModal.classList.remove('visible');
             qrButton.setAttribute('aria-expanded', 'false');
-
              qrModal.addEventListener('transitionend', function handleTransitionEnd() {
                 qrModal.hidden = true;
+                if (shareButton) { shareButton.hidden = true; } // Скрываем кнопку Поделиться при закрытии
                 qrModal.removeEventListener('transitionend', handleTransitionEnd);
-
-                previouslyFocusedElement?.focus();
-
+                previouslyFocusedElement?.focus(); // Возвращаем фокус
                 document.removeEventListener('keydown', handleModalKeydown);
-
              }, { once: true });
         }
 
+        // --- Обработчик клавиатуры для модального окна (Escape, ловушка фокуса) ---
         function handleModalKeydown(event) {
             if (!qrModal || !qrModal.classList.contains('visible')) return;
-
-            if (event.key === 'Escape') {
-                 hideQR();
-                 return;
-            }
-
+            // Закрытие по Escape
+            if (event.key === 'Escape') { hideQR(); return; }
+            // Ловушка фокуса (Tab/Shift+Tab)
             if (event.key === 'Tab') {
-                const focusableElements = qrModal.querySelectorAll(focusableElementsString);
+                const focusableElements = Array.from(qrModal.querySelectorAll(focusableElementsString))
+                                              .filter(el => !el.hidden && el.offsetParent !== null); // Только видимые
+                if (!focusableElements.length) { event.preventDefault(); return; }
                 const firstElement = focusableElements[0];
                 const lastElement = focusableElements[focusableElements.length - 1];
-
-                if (event.shiftKey) {
-                    if (document.activeElement === firstElement) {
-                        lastElement.focus();
-                        event.preventDefault();
+                const currentActiveElementIndex = focusableElements.indexOf(document.activeElement);
+                if (event.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement || currentActiveElementIndex === -1) {
+                        lastElement.focus(); event.preventDefault();
                     }
-                } else {
-                    if (document.activeElement === lastElement) {
-                        firstElement.focus();
-                        event.preventDefault();
+                } else { // Tab
+                    if (document.activeElement === lastElement || currentActiveElementIndex === -1) {
+                        firstElement.focus(); event.preventDefault();
                     }
                 }
             }
         }
 
-
-        // --- Event Listeners ---
-        if (qrButton) {
-            qrButton.addEventListener('click', showQR);
-        }
-
-        if (qrCloseButton) {
-            qrCloseButton.addEventListener('click', hideQR);
-        }
-
+        // --- Назначение обработчиков событий ---
+        if (qrButton) { qrButton.addEventListener('click', showQR); }
+        if (qrCloseButton) { qrCloseButton.addEventListener('click', hideQR); }
         if (qrModal) {
-            qrModal.addEventListener('click', function(event) {
-                if (event.target === qrModal) {
-                     hideQR();
+            qrModal.addEventListener('click', function(event) { // Закрытие по клику на фон
+                if (event.target === qrModal) { hideQR(); }
+            });
+        }
+
+        // --- Логика кнопки "Поделиться" (Web Share API) ---
+        if (shareButton && navigator.share) {
+            shareButton.addEventListener('click', async () => {
+                const shareData = {
+                    title: document.title,
+                    text: document.querySelector('meta[name="description"]')?.content || 'Визитка Елены Чайки - авторские куклы и мишки Тедди',
+                    url: window.location.href
+                };
+                try {
+                    await navigator.share(shareData);
+                    console.log('Страница успешно расшарена');
+                } catch (err) {
+                    console.error('Ошибка шаринга:', err.message);
                 }
             });
+        } else if (shareButton) {
+            console.log('Web Share API не поддерживается.');
         }
 
-
-        // --- Image Preloading ---
-        // Обновлены пути для предзагрузки изображений
+        // --- Предзагрузка изображений ---
         function preloadImages(urls) {
-            urls.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
+            urls.forEach(src => { const img = new Image(); img.src = src; });
         }
         preloadImages([
-            'images/Zajka.webp', // Обновлен путь
-            'images/Michka.webp', // Обновлен путь
-            'images/QR.png', // Обновлен путь
-            // Используем обновленный URL для предзагрузки OG изображения
-            'https://zeka3535.github.io/elena__chajka/images/ogimage.png' // Обновлен путь
+            'images/Zajka.webp',
+            'images/Michka.webp',
+            'images/QR.png',
+            'https://zeka3535.github.io/elena__chajka/images/ogimage.png'
         ]);
-
     </script>
 </body>
 </html>
