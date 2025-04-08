@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Иконки сайта -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Визитка - Елена Чайка" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="site.webmanifest" />
 
     <!-- Основные мета-теги для SEO и соцсетей -->
     <meta name="description" content="Авторские интерьерные куклы, зайки и мишки Тедди ручной работы от Елены Чайки. Уникальные handmade-игрушки с душой.">
@@ -19,7 +19,8 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta property="og:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta property="og:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
+    <!-- Исправлен путь к OG изображению на корректный URL GitHub Pages -->
+    <meta property="og:image" content="https://zeka3535.github.io/elena__chajka/ogimage.png">
     <meta property="og:image:width" content="1000">
     <meta property="og:image:height" content="1000">
     <meta property="og:type" content="website">
@@ -29,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Елена Чайка — авторские куклы и мишки Тедди">
     <meta name="twitter:description" content="Интерьерные куклы и мишки ручной работы. Сделано с теплом и любовью.">
-    <meta name="twitter:image" content="https://github.com/Zeka3535/elena__chajka/blob/main/ogimage.png?raw=true">
+    <meta name="twitter:image" content="https://zeka3535.github.io/elena__chajka/ogimage.png">
 
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
@@ -42,6 +43,7 @@
         html {
             box-sizing: border-box;
             height: 100%;
+            scroll-behavior: smooth;
         }
         *, *:before, *:after {
             box-sizing: inherit;
@@ -67,10 +69,10 @@
         /* --- Основной контейнер (карточка) --- */
         .container {
             --bear-relative-width: 30%;
-            --bear-max-width: 8.125rem;
+            --bear-max-width: 8.125rem; /* 130px */
 
             background-color: #fff5f5;
-            padding: 4rem 30px 35px 30px;
+            padding: 4rem 30px 35px 30px; /* ~64px top padding */
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
@@ -100,7 +102,7 @@
             pointer-events: none;
         }
 
-        /* --- Аватар (если используется) --- */
+        /* --- Аватар (если используется - currently not used in HTML) --- */
         .avatar {
             width: 120px;
             height: 120px;
@@ -167,20 +169,31 @@
             font-size: 1.4em;
             line-height: 1;
             flex-shrink: 0;
+            width: 1.4em;
+            text-align: center;
         }
 
         .link-button.phone i { font-size: 1.3em; }
-        .link-button.viber i { font-size: 1.4em; }
-        .link-button.instagram i { font-size: 1.4em; }
+
 
         /* --- Состояния кнопок --- */
-        .link-button:active {
-             background-color: #ede2e2;
+        .link-button:active,
+        .qr-button:active {
              transform: scale(1.01);
+             filter: brightness(0.95);
              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-         }
+             transition-duration: 0.1s;
+        }
+        .link-button:active {
+            background-color: #ede2e2;
+        }
+         .qr-button:active {
+            transform: scale(1.05);
+            opacity: 0.9;
+            background-color: #f9ecec;
+        }
 
-        @media (hover: hover) { /* Стили при наведении только для устройств с мышью */
+        @media (hover: hover) {
             .link-button:hover {
                 background-color: #f2e4e4;
                 transform: scale(1.03);
@@ -196,8 +209,15 @@
             }
             .link-button.phone:hover {
                 border-color: #cdd8cd;
-                color: #a6b6a6;
+                color: #788a78;
             }
+             .qr-button:hover {
+                 animation-play-state: paused;
+                 opacity: 1;
+                 transform: scale(1.1);
+                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                 background-color: #fff5f5;
+             }
             .qr-modal .close:hover {
                  background-color: #e8dada;
                  transform: scale(1.1) rotate(90deg);
@@ -233,19 +253,12 @@
             transform: scale(1);
         }
 
-         .qr-button:hover, .qr-button:active, .qr-button:focus {
-             animation: none;
+        .qr-button:focus-visible {
+             outline: 2px solid #a66f6f;
+             outline-offset: 2px;
              opacity: 1;
-             transform: scale(1.1);
              box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-             background-color: #fff5f5;
          }
-
-        .qr-button:active {
-            transform: scale(1.05);
-            opacity: 0.9;
-            background-color: #f9ecec;
-        }
 
         @keyframes pulseQrButton {
             0%, 100% {
@@ -275,7 +288,7 @@
 
         /* --- Модальное окно QR-кода --- */
         .qr-modal {
-            display: flex;
+            display: none;
             visibility: hidden;
             opacity: 0;
             position: fixed;
@@ -293,6 +306,7 @@
         }
 
         .qr-modal.visible {
+             display: flex;
              visibility: visible;
              opacity: 1;
              transition: opacity 0.3s ease-in-out, visibility 0s linear 0s;
@@ -344,7 +358,7 @@
             color: #a66f6f;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
             font-size: 1.8em;
-            font-weight: normal;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -356,33 +370,35 @@
             border: 2px solid #fff5f5;
         }
 
-        .qr-modal .close:active {
-             background-color: #d8c8c8;
-             transform: scale(1);
-             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-             transition-duration: 0.1s;
-        }
+         .qr-modal .close:focus-visible {
+             outline: 2px solid #a66f6f;
+             outline-offset: 2px;
+         }
 
         /* --- Вспомогательный класс для скрытия элементов --- */
         .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            margin: -1px !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            border: 0 !important;
+            white-space: nowrap !important;
         }
 
         /* --- Медиа-запросы для адаптивности --- */
-        @media (max-width: 480px) { /* Стили для маленьких экранов по ширине */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px 10px;
+            }
             .container {
-                 --bear-max-width: 6.25rem;
+                 --bear-max-width: 6.25rem; /* ~100px */
                  padding: 3.5rem 20px 30px 20px;
             }
             h1 {
-                font-size: 3.5em;
+                font-size: clamp(2.8em, 10vw, 3.5em);
             }
             .link-button {
                 padding: 12px 15px;
@@ -410,8 +426,8 @@
                  padding: 20px;
              }
              .qr-modal img.qr-code-image {
-                 max-width: calc(100% - 10px);
-                 max-height: calc(90vh - 100px);
+                 max-width: calc(100vw - 80px);
+                 max-height: calc(100dvh - 120px);
                  min-width: 120px;
                  min-height: 120px;
              }
@@ -431,9 +447,9 @@
              }
         }
 
-        @media (max-height: 580px) { /* Стили для экранов с маленькой высотой */
+        @media (max-height: 580px) and (max-width: 480px) {
              .bunny-decoration {
-                 display: none; /* Скрываем зайку, чтобы не мешал QR-кнопке */
+                 display: none;
              }
         }
 
@@ -441,98 +457,145 @@
 </head>
 <body>
     <div class="container">
-        <img src="Michka.webp" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy">
+        <img src="Michka.webp" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy" width="130" height="117">
 
         <h1>Елена Чайка</h1>
         <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
 
         <div class="links">
             <a href="https://www.instagram.com/elena__chajka" target="_blank" rel="noopener noreferrer" class="link-button instagram">
-                <i class="fa-brands fa-instagram"></i> Instagram
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram
             </a>
-            <a href="viber://chat?number=375297955001" target="_blank" rel="noopener noreferrer" class="link-button viber">
-                <i class="fa-brands fa-viber"></i> Viber
+            <a href="viber://chat?number=+375297955001" target="_blank" rel="noopener noreferrer" class="link-button viber">
+                <i class="fa-brands fa-viber" aria-hidden="true"></i> Viber
             </a>
             <a href="tel:+375297955001" class="link-button phone">
-                <i class="fa-solid fa-phone"></i> Позвонить
+                <i class="fa-solid fa-phone" aria-hidden="true"></i> Позвонить
             </a>
         </div>
 
-        <div class="slogan">Сделано с теплом и любовью ♥</div>
+        <div class="slogan">Сделано с теплом и любовью <span role="img" aria-label="сердце">♥</span></div>
     </div>
 
-    <button class="qr-button" onclick="showQR()" title="Показать QR-код этой страницы" aria-haspopup="dialog" id="qrButton">
-        <i class="fa-solid fa-qrcode"></i>
+    <button type="button" class="qr-button" title="Показать QR-код этой страницы" aria-haspopup="dialog" aria-expanded="false" id="qrButton" aria-controls="qrModal">
+        <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
+        <span class="visually-hidden">Показать QR-код</span>
     </button>
 
-    <img src="Zajka.webp" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration">
+    <img src="Zajka.webp" alt="Декоративный зайка ручной работы" class="bunny-decoration" loading="lazy" id="bunnyDecoration" width="110" height="163">
 
-    <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+    <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" hidden>
         <div class="qr-container">
-            <span class="close" onclick="hideQR()" title="Закрыть" aria-label="Закрыть" id="qrCloseButton" tabindex="0">×</span>
+            <button type="button" class="close" title="Закрыть" aria-label="Закрыть" id="qrCloseButton">×</button>
             <h2 id="qrModalTitle" class="visually-hidden">QR-код страницы</h2>
-            <img src="QR.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy">
+            <img src="QR.png" alt="QR-код для быстрого доступа к странице" class="qr-code-image" loading="lazy" width="300" height="300">
         </div>
     </div>
 
     <script>
-        // --- Логика модального окна QR-кода ---
+        // --- DOM Element References ---
         const qrModal = document.getElementById('qrModal');
         const qrButton = document.getElementById('qrButton');
         const qrCloseButton = document.getElementById('qrCloseButton');
+        const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
+        // --- State ---
+        let previouslyFocusedElement;
+
+        // --- Functions ---
         function showQR() {
-            if (qrModal) {
-                qrModal.classList.add('visible');
-                qrCloseButton.focus();
-            }
+            if (!qrModal || !qrButton) return;
+
+            previouslyFocusedElement = document.activeElement;
+
+            qrModal.hidden = false;
+            qrModal.classList.add('visible');
+            qrButton.setAttribute('aria-expanded', 'true');
+
+            setTimeout(() => {
+                qrCloseButton?.focus();
+            }, 100);
+
+             document.addEventListener('keydown', handleModalKeydown);
         }
 
         function hideQR() {
-             if (qrModal) {
-                qrModal.classList.remove('visible');
-                if (qrButton) {
-                    qrButton.focus();
-                }
-             }
+             if (!qrModal || !qrButton) return;
+
+            qrModal.classList.remove('visible');
+            qrButton.setAttribute('aria-expanded', 'false');
+
+             qrModal.addEventListener('transitionend', function handleTransitionEnd() {
+                qrModal.hidden = true;
+                qrModal.removeEventListener('transitionend', handleTransitionEnd);
+
+                previouslyFocusedElement?.focus();
+
+                document.removeEventListener('keydown', handleModalKeydown);
+
+             }, { once: true });
         }
 
-        // Обработчики закрытия модального окна
+        function handleModalKeydown(event) {
+            if (!qrModal || !qrModal.classList.contains('visible')) return;
+
+            if (event.key === 'Escape') {
+                 hideQR();
+                 return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusableElements = qrModal.querySelectorAll(focusableElementsString);
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        event.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        event.preventDefault();
+                    }
+                }
+            }
+        }
+
+
+        // --- Event Listeners ---
+        if (qrButton) {
+            qrButton.addEventListener('click', showQR);
+        }
+
+        if (qrCloseButton) {
+            qrCloseButton.addEventListener('click', hideQR);
+        }
+
         if (qrModal) {
-            // Клик на фон или кнопку закрытия
             qrModal.addEventListener('click', function(event) {
-                if (event.target === qrModal || event.target === qrCloseButton || event.target.parentElement === qrCloseButton) {
+                if (event.target === qrModal) {
                      hideQR();
                 }
             });
-            // Нажатие Enter/Space на кнопке закрытия
-            qrCloseButton.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    hideQR();
-                }
-            });
         }
 
-        // Глобальный обработчик для Escape и ловушки фокуса
-        document.addEventListener('keydown', function(event) {
-            // Закрытие по Escape
-            if (event.key === 'Escape' && qrModal?.classList.contains('visible')) {
-                 hideQR();
-            }
-            // Простая ловушка фокуса (не дает уйти с кнопки закрытия)
-            if (event.key === 'Tab' && qrModal?.classList.contains('visible')) {
-                 if (document.activeElement === qrCloseButton) {
-                     event.preventDefault();
-                 }
-            }
-        });
 
-        // --- Предзагрузка изображений ---
-        ['Zajka.webp', 'Michka.webp', 'QR.png', 'ogimage.png'].forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+        // --- Image Preloading ---
+        function preloadImages(urls) {
+            urls.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+        preloadImages([
+            'Zajka.webp',
+            'Michka.webp',
+            'QR.png',
+            'https://zeka3535.github.io/elena__chajka/ogimage.png'
+        ]);
+
     </script>
 </body>
 </html>
