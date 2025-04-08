@@ -54,7 +54,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            min-height: 100dvh; /* Динамическая высота для мобильных */
+            min-height: 100dvh;
             position: relative;
             padding: 20px 10px;
             overflow-x: hidden;
@@ -63,16 +63,16 @@
         /* --- Основной контейнер (карточка) --- */
         .container {
             --bear-relative-width: 30%;
-            --bear-max-width: 8.125rem; /* Макс. ширина мишки в rem */
+            --bear-max-width: 8.125rem;
 
             background-color: #fff5f5;
-            padding: 4rem 30px 35px 30px; /* Отступ сверху для мишки */
+            padding: 4rem 30px 35px 30px;
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
             max-width: 450px;
             width: 100%;
-            position: relative; /* Для позиционирования мишки */
+            position: relative;
             animation: fadeInContainer 1s ease-in-out;
             z-index: 1;
             margin: 0;
@@ -86,9 +86,8 @@
         /* --- Декоративный мишка --- */
         .bear-decoration {
             position: absolute;
-            top: 0; /* Позиционируем от верха контейнера */
+            top: 0;
             left: 50%;
-            /* Центрируем и сдвигаем вверх на % от своей высоты */
             transform: translate(-50%, -90%);
             width: var(--bear-relative-width);
             max-width: var(--bear-max-width);
@@ -163,7 +162,7 @@
         .link-button i {
             font-size: 1.4em;
             line-height: 1;
-            flex-shrink: 0; /* Запрещаем иконке сжиматься */
+            flex-shrink: 0;
         }
 
         .link-button.phone i { font-size: 1.3em; }
@@ -360,7 +359,7 @@
              transition-duration: 0.1s;
         }
 
-        /* --- Вспомогательный класс для скрытия элементов доступно --- */
+        /* --- Вспомогательный класс для скрытия элементов --- */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -481,7 +480,7 @@
         function showQR() {
             if (qrModal) {
                 qrModal.classList.add('visible');
-                qrCloseButton.focus(); // Устанавливаем фокус на кнопку закрытия
+                qrCloseButton.focus();
             }
         }
 
@@ -489,7 +488,7 @@
              if (qrModal) {
                 qrModal.classList.remove('visible');
                 if (qrButton) {
-                    qrButton.focus(); // Возвращаем фокус на кнопку QR
+                    qrButton.focus();
                 }
              }
         }
