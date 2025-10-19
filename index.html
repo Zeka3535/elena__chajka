@@ -39,11 +39,41 @@
     <meta name="twitter:description" content="Авторские интерьерные куклы, мишки Тедди и зайки ручной работы. Сделано с теплом и любовью.">
     <meta name="twitter:image" content="https://zeka3535.github.io/elena__chajka/images/ogimage.png">
 
+    <!-- Структурированные данные JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Елена Чайка",
+        "description": "Авторские интерьерные куклы, мишки Тедди и зайки ручной работы",
+        "url": "https://zeka3535.github.io/elena__chajka/",
+        "image": "https://zeka3535.github.io/elena__chajka/images/ogimage.png",
+        "sameAs": [
+            "https://www.instagram.com/elena__chajka"
+        ],
+        "telephone": "+375297955001",
+        "jobTitle": "Мастер рукоделия",
+        "knowsAbout": ["Интерьерные куклы", "Мишки Тедди", "Ручная работа", "Handmade игрушки"],
+        "offers": {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "Product",
+                "name": "Авторские интерьерные куклы и мишки Тедди",
+                "description": "Уникальные handmade-игрушки ручной работы"
+            }
+        }
+    }
+    </script>
+
     <title>Елена Чайка - Рукоделие | Интерьерные куклы и мишки Тедди</title>
 
-    <!-- Подключение иконок (Font Awesome) и шрифтов (Google Fonts) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Предзагрузка критических ресурсов -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:wght@300;400&display=swap"></noscript>
+    
+    <!-- Подключение иконок (Font Awesome) с оптимизацией -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 
     <style>
         /* --- Базовые стили и сброс --- */
@@ -58,7 +88,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             font-weight: 300;
-            background-color: #f9ecec;
+            background: linear-gradient(135deg, #f9ecec 0%, #f5e6e8 100%);
             color: #5f4b4b;
             margin: 0;
             display: flex;
@@ -75,10 +105,10 @@
         .container {
             --bear-relative-width: 30%;
             --bear-max-width: 8.125rem;
-            background-color: #fff5f5;
+            background: linear-gradient(145deg, #fff5f5 0%, #fef9f9 100%);
             padding: 4rem 30px 35px 30px;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.8);
             text-align: center;
             max-width: 450px;
             width: 100%;
@@ -86,10 +116,18 @@
             animation: fadeInContainer 1s ease-in-out;
             z-index: 1;
             margin: 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         @keyframes fadeInContainer {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
 
         /* --- Декоративный мишка над карточкой --- */
@@ -113,12 +151,14 @@
             color: #a66f6f;
             margin: 0 0 10px;
             line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
         .description {
             font-size: 1.1em;
             color: #7a6a6a;
             margin-bottom: 30px;
             line-height: 1.5;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
         .slogan {
             font-family: 'Amatic SC', cursive;
@@ -127,6 +167,18 @@
             color: #d89ca9;
             margin-top: 15px;
             line-height: 1.2;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* --- Блок ссылок (Instagram, Viber, Телефон) --- */
@@ -135,7 +187,12 @@
             flex-direction: column;
             gap: 15px;
             margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
         }
+        
+        .link-button:nth-child(1) { animation: fadeInUp 0.8s ease-out 1s both; }
+        .link-button:nth-child(2) { animation: fadeInUp 0.8s ease-out 1.2s both; }
+        .link-button:nth-child(3) { animation: fadeInUp 0.8s ease-out 1.4s both; }
         .link-button {
             padding: 15px 20px;
             border: 2px solid #f2e4e4;
@@ -144,13 +201,30 @@
             color: #5f4b4b;
             font-size: 1.1em;
             font-weight: 400;
-            background-color: #fefafa;
+            background: linear-gradient(145deg, #fefafa 0%, #f9f5f5 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             -webkit-tap-highlight-color: transparent;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .link-button:hover::before {
+            left: 100%;
         }
         .link-button i {
             font-size: 1.4em;
@@ -225,6 +299,21 @@
             pointer-events: none;
             opacity: 0.8;
             transform: rotate(-5deg);
+            animation: wiggleBunny 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        @keyframes wiggleBunny {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            25% { transform: rotate(-3deg) scale(1.02); }
+            50% { transform: rotate(-7deg) scale(1); }
+            75% { transform: rotate(-4deg) scale(1.01); }
+        }
+        
+        .bunny-decoration:hover {
+            animation-play-state: paused;
+            transform: rotate(-5deg) scale(1.1);
+            opacity: 1;
         }
 
         /* --- Модальное окно QR-кода --- */
@@ -324,6 +413,7 @@
         .share-button:active { transform: scale(1.05); filter: brightness(0.95); transition-duration: 0.1s; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
         .share-button:focus-visible { outline: 2px solid #a66f6f; outline-offset: 2px; }
 
+
         /* --- Вспомогательный класс для скрытия элементов (для доступности) --- */
         .visually-hidden {
             position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; border: 0 !important; white-space: nowrap !important;
@@ -355,26 +445,28 @@
 </head>
 <body>
     <!-- Основной контейнер-визитка -->
-    <div class="container">
+    <main class="container" role="main" aria-label="Визитка Елены Чайки">
         <img src="images/Michka.webp" alt="Декоративный мишка ручной работы" class="bear-decoration" loading="lazy" width="130" height="117">
 
-        <h1>Елена Чайка</h1>
-        <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
+        <header>
+            <h1>Елена Чайка</h1>
+            <p class="description">Интерьерные куклы, зайки и мишки Тедди ручной работы</p>
+        </header>
 
-        <div class="links">
-            <a href="https://www.instagram.com/elena__chajka" target="_blank" rel="noopener noreferrer" class="link-button instagram">
+        <nav class="links" aria-label="Контактная информация">
+            <a href="https://www.instagram.com/elena__chajka" target="_blank" rel="noopener noreferrer" class="link-button instagram" aria-label="Перейти в Instagram профиль Елены Чайки">
                 <i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram
             </a>
-            <a href="viber://chat?number=+375297955001" target="_blank" rel="noopener noreferrer" class="link-button viber">
+            <a href="viber://chat?number=+375297955001" target="_blank" rel="noopener noreferrer" class="link-button viber" aria-label="Написать в Viber по номеру +375297955001">
                 <i class="fa-brands fa-viber" aria-hidden="true"></i> Viber
             </a>
-            <a href="tel:+375297955001" class="link-button phone">
+            <a href="tel:+375297955001" class="link-button phone" aria-label="Позвонить по номеру +375297955001">
                 <i class="fa-solid fa-phone" aria-hidden="true"></i> Позвонить
             </a>
-        </div>
+        </nav>
 
-        <div class="slogan">Сделано с теплом и любовью <span role="img" aria-label="сердце">♥</span></div>
-    </div>
+        <footer class="slogan">Сделано с теплом и любовью <span role="img" aria-label="сердце">♥</span></footer>
+    </main>
 
     <!-- Кнопка вызова QR -->
     <button type="button" class="qr-button" title="Показать QR-код этой страницы" aria-haspopup="dialog" aria-expanded="false" id="qrButton" aria-controls="qrModal">
@@ -400,79 +492,140 @@
     </div>
 
     <script>
-        // --- Ссылки на DOM-элементы ---
+        // ========================================
+        // УПРАВЛЕНИЕ МОДАЛЬНЫМ ОКНОМ QR-КОДА
+        // ========================================
+        
+        // Ссылки на DOM-элементы
         const qrModal = document.getElementById('qrModal');
         const qrButton = document.getElementById('qrButton');
         const qrCloseButton = document.getElementById('qrCloseButton');
         const shareButton = document.getElementById('shareButton');
         const focusableElementsString = '#qrModal button, #qrModal [href], #qrModal input, #qrModal select, #qrModal textarea, #qrModal [tabindex]:not([tabindex="-1"])';
 
-        // --- Состояние ---
+        // Состояние приложения
         let previouslyFocusedElement; // Для возврата фокуса после закрытия модалки
 
-        // --- Функции управления модальным окном ---
+        // ========================================
+        // ФУНКЦИИ УПРАВЛЕНИЯ МОДАЛЬНЫМ ОКНОМ
+        // ========================================
+        
+        /**
+         * Показывает модальное окно с QR-кодом
+         * Устанавливает фокус и обрабатывает доступность
+         */
         function showQR() {
             if (!qrModal || !qrButton) return;
+            
+            // Сохраняем текущий фокус для возврата после закрытия
             previouslyFocusedElement = document.activeElement;
+            
+            // Показываем модальное окно
             qrModal.hidden = false;
             qrModal.classList.add('visible');
             qrButton.setAttribute('aria-expanded', 'true');
-            // Показываем кнопку Поделиться, если API доступен
-            if (shareButton && navigator.share) { shareButton.hidden = false; }
-            else if (shareButton) { shareButton.hidden = true; }
-            // Устанавливаем фокус на кнопку закрытия
+            
+            // Показываем кнопку "Поделиться" только если Web Share API поддерживается
+            if (shareButton && navigator.share) { 
+                shareButton.hidden = false; 
+            } else if (shareButton) { 
+                shareButton.hidden = true; 
+            }
+            
+            // Устанавливаем фокус на кнопку закрытия с небольшой задержкой
             setTimeout(() => { qrCloseButton?.focus(); }, 100);
+            
+            // Добавляем обработчик клавиатуры для модального окна
             document.addEventListener('keydown', handleModalKeydown);
         }
 
+        /**
+         * Скрывает модальное окно с QR-кодом
+         * Возвращает фокус и очищает обработчики событий
+         */
         function hideQR() {
-             if (!qrModal || !qrButton) return;
+            if (!qrModal || !qrButton) return;
+            
+            // Начинаем анимацию закрытия
             qrModal.classList.remove('visible');
             qrButton.setAttribute('aria-expanded', 'false');
-             qrModal.addEventListener('transitionend', function handleTransitionEnd() {
+            
+            // Ждем завершения анимации перед полным скрытием
+            qrModal.addEventListener('transitionend', function handleTransitionEnd() {
                 qrModal.hidden = true;
-                if (shareButton) { shareButton.hidden = true; } // Скрываем кнопку Поделиться при закрытии
+                if (shareButton) { shareButton.hidden = true; }
                 qrModal.removeEventListener('transitionend', handleTransitionEnd);
                 previouslyFocusedElement?.focus(); // Возвращаем фокус
                 document.removeEventListener('keydown', handleModalKeydown);
-             }, { once: true });
+            }, { once: true });
         }
 
-        // --- Обработчик клавиатуры для модального окна (Escape, ловушка фокуса) ---
+        // ========================================
+        // ОБРАБОТКА КЛАВИАТУРЫ И ДОСТУПНОСТИ
+        // ========================================
+        
+        /**
+         * Обрабатывает нажатия клавиш в модальном окне
+         * Поддерживает Escape для закрытия и ловушку фокуса
+         */
         function handleModalKeydown(event) {
             if (!qrModal || !qrModal.classList.contains('visible')) return;
-            // Закрытие по Escape
-            if (event.key === 'Escape') { hideQR(); return; }
-            // Ловушка фокуса (Tab/Shift+Tab)
+            
+            // Закрытие по клавише Escape
+            if (event.key === 'Escape') { 
+                hideQR(); 
+                return; 
+            }
+            
+            // Ловушка фокуса для навигации с клавиатуры
             if (event.key === 'Tab') {
                 const focusableElements = Array.from(qrModal.querySelectorAll(focusableElementsString))
-                                              .filter(el => !el.hidden && el.offsetParent !== null); // Только видимые
-                if (!focusableElements.length) { event.preventDefault(); return; }
+                                              .filter(el => !el.hidden && el.offsetParent !== null);
+                if (!focusableElements.length) { 
+                    event.preventDefault(); 
+                    return; 
+                }
+                
                 const firstElement = focusableElements[0];
                 const lastElement = focusableElements[focusableElements.length - 1];
                 const currentActiveElementIndex = focusableElements.indexOf(document.activeElement);
-                if (event.shiftKey) { // Shift + Tab
+                
+                if (event.shiftKey) { // Shift + Tab - навигация назад
                     if (document.activeElement === firstElement || currentActiveElementIndex === -1) {
-                        lastElement.focus(); event.preventDefault();
+                        lastElement.focus(); 
+                        event.preventDefault();
                     }
-                } else { // Tab
+                } else { // Tab - навигация вперед
                     if (document.activeElement === lastElement || currentActiveElementIndex === -1) {
-                        firstElement.focus(); event.preventDefault();
+                        firstElement.focus(); 
+                        event.preventDefault();
                     }
                 }
             }
         }
 
-        // --- Назначение обработчиков событий ---
+        // ========================================
+        // ИНИЦИАЛИЗАЦИЯ И ОБРАБОТЧИКИ СОБЫТИЙ
+        // ========================================
+        
+        // Назначение обработчиков событий для модального окна
         if (qrButton) { qrButton.addEventListener('click', showQR); }
         if (qrCloseButton) { qrCloseButton.addEventListener('click', hideQR); }
         if (qrModal) {
-            qrModal.addEventListener('click', function(event) { // Закрытие по клику на фон
+            // Закрытие модального окна по клику на фон
+            qrModal.addEventListener('click', function(event) {
                 if (event.target === qrModal) { hideQR(); }
             });
         }
 
-        // --- Логика кнопки "Поделиться" (Web Share API) ---
+        // ========================================
+        // ФУНКЦИОНАЛЬНОСТЬ ПОДЕЛИТЬСЯ
+        // ========================================
+        
+        /**
+         * Обработчик кнопки "Поделиться" с использованием Web Share API
+         * Позволяет пользователям делиться ссылкой на страницу
+         */
         if (shareButton && navigator.share) {
             shareButton.addEventListener('click', async () => {
                 const shareData = {
@@ -482,19 +635,34 @@
                 };
                 try {
                     await navigator.share(shareData);
-                    console.log('Страница успешно расшарена');
                 } catch (err) {
-                    console.error('Ошибка шаринга:', err.message);
+                    // Пользователь отменил шаринг или произошла ошибка
+                    if (err.name !== 'AbortError') {
+                        console.error('Ошибка шаринга:', err.message);
+                    }
                 }
             });
         } else if (shareButton) {
-            console.log('Web Share API не поддерживается.');
+            // Web Share API не поддерживается в этом браузере
+            shareButton.style.display = 'none';
         }
 
-        // --- Предзагрузка изображений ---
+        // ========================================
+        // ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ
+        // ========================================
+        
+        /**
+         * Предзагружает изображения для улучшения производительности
+         * @param {string[]} urls - Массив URL изображений для предзагрузки
+         */
         function preloadImages(urls) {
-            urls.forEach(src => { const img = new Image(); img.src = src; });
+            urls.forEach(src => { 
+                const img = new Image(); 
+                img.src = src; 
+            });
         }
+        
+        // Предзагружаем все изображения на странице
         preloadImages([
             'images/Zajka.webp',
             'images/Michka.webp',
